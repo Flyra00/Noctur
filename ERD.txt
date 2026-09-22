@@ -1,0 +1,1480 @@
+////////////////////////////////////////////////////////////
+// CITY DISCOVERY PLATFORM
+// ERD / DATABASE DESIGN
+//
+// Stack:
+// - PostgreSQL
+// - PostGIS
+// - Prisma
+// - Next.js
+//
+// Core concept:
+// User -> Place/Business/Event/Community/Journey
+// User interactions -> Save/Review/RSVP/Check-in/Follow
+// Operations -> Claim/Verification/Moderation/Audit
+////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////
+// ENUM-LIKE LOOKUP TABLES / RBAC
+////////////////////////////////////////////////////////////
+
+Table roles {
+  id uuid [pk]
+  name varchar(50) [unique, not null]
+  description text
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table permissions {
+  id uuid [pk]
+  name varchar(100) [unique, not null]
+  description text
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table user_roles {
+  user_id uuid [not null]
+  role_id uuid [not null]
+  created_at timestamp
+
+  indexes {
+    (user_id, role_id) [pk]
+  }
+}
+
+Table role_permissions {
+  role_id uuid [not null]
+  permission_id uuid [not null]
+  created_at timestamp
+
+  indexes {
+    (role_id, permission_id) [pk]
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// AUTHENTICATION / USERS
+////////////////////////////////////////////////////////////
+
+Table users {
+  id uuid [pk]
+
+  name varchar(150) [not null]
+  username varchar(50) [unique]
+  email varchar(255) [unique, not null]
+  email_verified_at timestamp
+  password_hash varchar(255)
+
+  image_url text
+  bio text
+
+  city_id uuid
+
+  status varchar(30) [not null, note: 'ACTIVE | SUSPENDED | DELETED']
+
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+
+  indexes {
+    email
+    username
+    city_id
+    status
+  }
+}
+
+
+// Auth.js / OAuth provider accounts
+Table accounts {
+  id uuid [pk]
+  user_id uuid [not null]
+
+  type varchar(50) [not null]
+  provider varchar(100) [not null]
+  provider_account_id varchar(255) [not null]
+
+  refresh_token text
+  access_token text
+  expires_at bigint
+  token_type varchar(100)
+  scope text
+  id_token text
+  session_state text
+
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    (provider, provider_account_id) [unique]
+    user_id
+  }
+}
+
+
+// Auth.js sessions
+Table sessions {
+  id uuid [pk]
+  session_token varchar(255) [unique, not null]
+  user_id uuid [not null]
+  expires_at timestamp [not null]
+
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    user_id
+  }
+}
+
+
+// Auth.js verification tokens
+Table verification_tokens {
+  identifier varchar(255) [not null]
+  token varchar(255) [not null]
+  expires_at timestamp [not null]
+
+  indexes {
+    (identifier, token) [pk]
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// GEOGRAPHIC STRUCTURE
+////////////////////////////////////////////////////////////
+
+Table cities {
+  id uuid [pk]
+
+  name varchar(150) [not null]
+  slug varchar(180) [unique, not null]
+  province varchar(150)
+  country varchar(100) [default: 'Indonesia']
+
+  latitude decimal(10,7)
+  longitude decimal(10,7)
+
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    slug
+    name
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// CATEGORY / TAG
+////////////////////////////////////////////////////////////
+
+Table categories {
+  id uuid [pk]
+
+  parent_id uuid
+
+  name varchar(100) [not null]
+  slug varchar(120) [unique, not null]
+
+  type varchar(50) [not null, note: 'PLACE | EVENT | COMMUNITY | JOURNEY | GENERAL']
+
+  description text
+
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    parent_id
+    type
+    slug
+  }
+}
+
+Table tags {
+  id uuid [pk]
+
+  name varchar(80) [unique, not null]
+  slug varchar(100) [unique, not null]
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+
+////////////////////////////////////////////////////////////
+// BUSINESS
+////////////////////////////////////////////////////////////
+
+Table businesses {
+  id uuid [pk]
+
+  name varchar(200) [not null]
+  slug varchar(220) [unique, not null]
+
+  description text
+  website_url text
+  phone varchar(50)
+  email varchar(255)
+
+  status varchar(30) [not null, note: 'ACTIVE | INACTIVE | SUSPENDED']
+
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+
+  indexes {
+    slug
+    name
+    status
+  }
+}
+
+
+// Business can have multiple owners/managers.
+// This is separate from platform BUSINESS_OWNER role.
+Table business_members {
+  id uuid [pk]
+
+  business_id uuid [not null]
+  user_id uuid [not null]
+
+  member_role varchar(30) [not null, note: 'OWNER | MANAGER']
+
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    (business_id, user_id) [unique]
+    user_id
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// BUSINESS CLAIM / VERIFICATION
+////////////////////////////////////////////////////////////
+
+Table business_claims {
+  id uuid [pk]
+
+  business_id uuid [not null]
+  submitted_by uuid [not null]
+
+  status varchar(30) [not null, note: 'CLAIM_SUBMITTED | UNDER_REVIEW | APPROVED | REJECTED']
+
+  evidence_text text
+  evidence_url text
+
+  reviewed_by uuid
+  reviewed_at timestamp
+  rejection_reason text
+
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    business_id
+    submitted_by
+    status
+  }
+}
+
+Table business_verifications {
+  id uuid [pk]
+
+  business_id uuid [not null]
+  claim_id uuid
+
+  verified_by uuid [not null]
+
+  method varchar(50) [not null, note: 'DOCUMENT | PHONE | EMAIL | MANUAL | OTHER']
+  status varchar(30) [not null, note: 'VERIFIED | REJECTED | REVOKED']
+
+  evidence text
+  notes text
+
+  verified_at timestamp
+  created_at timestamp
+
+  indexes {
+    business_id
+    claim_id
+    verified_by
+    status
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// PLACES
+////////////////////////////////////////////////////////////
+
+// Physical location.
+// A Business represents the operating entity.
+// A Place represents its physical branch/location.
+Table places {
+  id uuid [pk]
+
+  business_id uuid
+  city_id uuid
+  category_id uuid
+
+  name varchar(200) [not null]
+  slug varchar(220) [unique, not null]
+
+  description text
+
+  address text
+  postal_code varchar(20)
+
+  latitude decimal(10,7)
+  longitude decimal(10,7)
+
+  // PostgreSQL/PostGIS
+  location geography
+
+  phone varchar(50)
+  website_url text
+
+  status varchar(30) [not null, note: 'DRAFT | PUBLISHED | HIDDEN | CLOSED']
+
+  price_level varchar(20, note: 'FREE | LOW | MEDIUM | HIGH | LUXURY')
+
+  created_by uuid
+  updated_by uuid
+
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+
+  indexes {
+    slug
+    business_id
+    city_id
+    category_id
+    status
+    (latitude, longitude)
+  }
+}
+
+
+Table place_tags {
+  place_id uuid [not null]
+  tag_id uuid [not null]
+
+  indexes {
+    (place_id, tag_id) [pk]
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// PLACE FACILITIES
+////////////////////////////////////////////////////////////
+
+Table facilities {
+  id uuid [pk]
+
+  name varchar(100) [unique, not null]
+  slug varchar(120) [unique, not null]
+
+  created_at timestamp
+}
+
+Table place_facilities {
+  place_id uuid [not null]
+  facility_id uuid [not null]
+
+  indexes {
+    (place_id, facility_id) [pk]
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// OPENING HOURS
+////////////////////////////////////////////////////////////
+
+Table place_opening_hours {
+  id uuid [pk]
+
+  place_id uuid [not null]
+
+  day_of_week int [not null, note: '0 = Sunday ... 6 = Saturday']
+
+  opens_at time
+  closes_at time
+
+  is_closed boolean [not null, default: false]
+
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    (place_id, day_of_week) [unique]
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// MENUS
+////////////////////////////////////////////////////////////
+
+Table menus {
+  id uuid [pk]
+
+  place_id uuid [not null]
+
+  name varchar(150) [not null]
+  description text
+
+  status varchar(30) [not null, note: 'DRAFT | PUBLISHED | ARCHIVED']
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table menu_items {
+  id uuid [pk]
+
+  menu_id uuid [not null]
+
+  name varchar(150) [not null]
+  description text
+
+  price decimal(12,2)
+  currency varchar(10) [default: 'IDR']
+
+  image_url text
+
+  is_available boolean [not null, default: true]
+
+  sort_order int [default: 0]
+
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    menu_id
+    is_available
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// MEDIA
+////////////////////////////////////////////////////////////
+
+// Actual media files are stored externally,
+// e.g. Cloudinary.
+// Database stores metadata only.
+Table media {
+  id uuid [pk]
+
+  uploaded_by uuid [not null]
+
+  provider varchar(50) [not null, note: 'CLOUDINARY | LOCAL | OTHER']
+  provider_public_id varchar(255)
+
+  url text [not null]
+
+  mime_type varchar(100)
+  width int
+  height int
+  file_size bigint
+
+  alt_text text
+
+  status varchar(30) [not null, note: 'ACTIVE | HIDDEN | DELETED']
+
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    uploaded_by
+    provider_public_id
+    status
+  }
+}
+
+
+Table place_media {
+  place_id uuid [not null]
+  media_id uuid [not null]
+
+  sort_order int [default: 0]
+  is_cover boolean [default: false]
+
+  indexes {
+    (place_id, media_id) [pk]
+  }
+}
+
+Table business_media {
+  business_id uuid [not null]
+  media_id uuid [not null]
+
+  sort_order int [default: 0]
+  is_cover boolean [default: false]
+
+  indexes {
+    (business_id, media_id) [pk]
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// EVENTS
+////////////////////////////////////////////////////////////
+
+Table events {
+  id uuid [pk]
+
+  organizer_id uuid [not null]
+
+  place_id uuid
+  city_id uuid
+  category_id uuid
+
+  name varchar(250) [not null]
+  slug varchar(280) [unique, not null]
+
+  description text
+
+  status varchar(40) [not null, note: 'DRAFT | SUBMITTED | PENDING_REVIEW | PUBLISHED | ONGOING | COMPLETED | REJECTED | CANCELLED | RESCHEDULED']
+
+  visibility varchar(30) [not null, note: 'PUBLIC | PRIVATE']
+
+  age_restriction varchar(30)
+
+  capacity int
+
+  terms text
+
+  published_at timestamp
+
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+
+  indexes {
+    organizer_id
+    place_id
+    city_id
+    category_id
+    status
+    slug
+  }
+}
+
+
+Table event_schedules {
+  id uuid [pk]
+
+  event_id uuid [not null]
+
+  starts_at timestamp [not null]
+  ends_at timestamp [not null]
+
+  timezone varchar(100) [default: 'Asia/Jakarta']
+
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    event_id
+    starts_at
+    ends_at
+  }
+}
+
+
+Table event_tags {
+  event_id uuid [not null]
+  tag_id uuid [not null]
+
+  indexes {
+    (event_id, tag_id) [pk]
+  }
+}
+
+
+Table event_media {
+  event_id uuid [not null]
+  media_id uuid [not null]
+
+  sort_order int [default: 0]
+  is_cover boolean [default: false]
+
+  indexes {
+    (event_id, media_id) [pk]
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// EVENT <-> COMMUNITY
+////////////////////////////////////////////////////////////
+
+Table community_events {
+  community_id uuid [not null]
+  event_id uuid [not null]
+
+  created_at timestamp
+
+  indexes {
+    (community_id, event_id) [pk]
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// EVENT RSVP
+////////////////////////////////////////////////////////////
+
+Table rsvps {
+  id uuid [pk]
+
+  event_id uuid [not null]
+  user_id uuid [not null]
+
+  status varchar(30) [not null, note: 'GOING | INTERESTED | CANCELLED | ATTENDED']
+
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    (event_id, user_id) [unique]
+    user_id
+    status
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// TICKETING
+////////////////////////////////////////////////////////////
+
+Table ticket_types {
+  id uuid [pk]
+
+  event_id uuid [not null]
+
+  name varchar(150) [not null]
+  description text
+
+  price decimal(12,2) [not null]
+  currency varchar(10) [default: 'IDR']
+
+  quota int
+  sold_count int [default: 0]
+
+  sales_start_at timestamp
+  sales_end_at timestamp
+
+  status varchar(30) [not null, note: 'ACTIVE | SOLD_OUT | INACTIVE']
+
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    event_id
+    status
+  }
+}
+
+
+Table orders {
+  id uuid [pk]
+
+  user_id uuid [not null]
+  event_id uuid [not null]
+
+  order_number varchar(50) [unique, not null]
+
+  status varchar(30) [not null, note: 'PENDING | PAID | EXPIRED | CANCELLED | REFUNDED']
+
+  subtotal decimal(12,2) [not null]
+  fee decimal(12,2) [default: 0]
+  total decimal(12,2) [not null]
+
+  currency varchar(10) [default: 'IDR']
+
+  expires_at timestamp
+
+  paid_at timestamp
+  cancelled_at timestamp
+
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    user_id
+    event_id
+    status
+    order_number
+  }
+}
+
+
+Table order_items {
+  id uuid [pk]
+
+  order_id uuid [not null]
+  ticket_type_id uuid [not null]
+
+  quantity int [not null]
+  unit_price decimal(12,2) [not null]
+  subtotal decimal(12,2) [not null]
+
+  created_at timestamp
+
+  indexes {
+    order_id
+    ticket_type_id
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// PAYMENT
+////////////////////////////////////////////////////////////
+
+Table payments {
+  id uuid [pk]
+
+  order_id uuid [not null]
+
+  provider varchar(50) [not null, note: 'MIDTRANS | OTHER']
+
+  provider_transaction_id varchar(255)
+  provider_reference varchar(255)
+
+  status varchar(30) [not null, note: 'PENDING | SUCCESS | FAILED | EXPIRED | REFUNDED']
+
+  amount decimal(12,2) [not null]
+  currency varchar(10) [default: 'IDR']
+
+  raw_response json
+
+  paid_at timestamp
+
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    order_id
+    provider_transaction_id
+    status
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// DIGITAL TICKETS
+////////////////////////////////////////////////////////////
+
+Table tickets {
+  id uuid [pk]
+
+  order_item_id uuid [not null]
+  user_id uuid [not null]
+  event_id uuid [not null]
+
+  ticket_code varchar(100) [unique, not null]
+
+  status varchar(30) [not null, note: 'VALID | USED | CANCELLED | REFUNDED']
+
+  issued_at timestamp
+  used_at timestamp
+
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    ticket_code
+    user_id
+    event_id
+    status
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// CHECK-IN
+////////////////////////////////////////////////////////////
+
+Table check_ins {
+  id uuid [pk]
+
+  user_id uuid [not null]
+
+  place_id uuid
+  event_id uuid
+  ticket_id uuid
+
+  checked_in_by uuid
+
+  method varchar(30) [not null, note: 'QR | MANUAL | GPS | SYSTEM']
+
+  latitude decimal(10,7)
+  longitude decimal(10,7)
+
+  status varchar(30) [not null, note: 'SUCCESS | FAILED | REVOKED']
+
+  checked_in_at timestamp [not null]
+
+  created_at timestamp
+
+  indexes {
+    user_id
+    place_id
+    event_id
+    ticket_id
+    checked_in_at
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// REVIEWS
+////////////////////////////////////////////////////////////
+
+Table reviews {
+  id uuid [pk]
+
+  user_id uuid [not null]
+  place_id uuid [not null]
+
+  rating int [not null, note: '1 - 5']
+
+  title varchar(200)
+  content text
+
+  status varchar(30) [not null, note: 'PUBLISHED | PENDING | HIDDEN | REMOVED']
+
+  visit_date date
+
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+
+  indexes {
+    (user_id, place_id) [unique]
+    place_id
+    user_id
+    rating
+    status
+  }
+}
+
+
+Table review_photos {
+  review_id uuid [not null]
+  media_id uuid [not null]
+
+  sort_order int [default: 0]
+
+  indexes {
+    (review_id, media_id) [pk]
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// COMMUNITIES
+////////////////////////////////////////////////////////////
+
+Table communities {
+  id uuid [pk]
+
+  created_by uuid [not null]
+  city_id uuid
+  category_id uuid
+
+  name varchar(200) [not null]
+  slug varchar(220) [unique, not null]
+
+  description text
+
+  visibility varchar(30) [not null, note: 'PUBLIC | PRIVATE']
+
+  status varchar(30) [not null, note: 'ACTIVE | SUSPENDED | ARCHIVED']
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+
+Table community_members {
+  id uuid [pk]
+
+  community_id uuid [not null]
+  user_id uuid [not null]
+
+  member_role varchar(30) [not null, note: 'OWNER | ADMIN | MODERATOR | MEMBER']
+
+  status varchar(30) [not null, note: 'ACTIVE | BANNED | LEFT']
+
+  joined_at timestamp
+  updated_at timestamp
+
+  indexes {
+    (community_id, user_id) [unique]
+    user_id
+    member_role
+    status
+  }
+}
+
+
+Table community_posts {
+  id uuid [pk]
+
+  community_id uuid [not null]
+  author_id uuid [not null]
+
+  content text [not null]
+
+  status varchar(30) [not null, note: 'PUBLISHED | HIDDEN | REMOVED']
+
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+
+  indexes {
+    community_id
+    author_id
+    status
+    created_at
+  }
+}
+
+
+Table post_comments {
+  id uuid [pk]
+
+  post_id uuid [not null]
+  author_id uuid [not null]
+
+  parent_comment_id uuid
+
+  content text [not null]
+
+  status varchar(30) [not null, note: 'PUBLISHED | HIDDEN | REMOVED']
+
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+
+  indexes {
+    post_id
+    author_id
+    parent_comment_id
+    status
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// JOURNEYS
+////////////////////////////////////////////////////////////
+
+// Curated or user-created exploration routes.
+// Example:
+// "Jakarta Night Food Journey"
+// "Coffee Shop Hopping"
+// "Weekend Hidden Gems"
+Table journeys {
+  id uuid [pk]
+
+  created_by uuid [not null]
+
+  community_id uuid
+  city_id uuid
+  category_id uuid
+
+  name varchar(200) [not null]
+  slug varchar(220) [unique, not null]
+
+  description text
+
+  visibility varchar(30) [not null, note: 'PUBLIC | PRIVATE | UNLISTED']
+
+  status varchar(30) [not null, note: 'DRAFT | PUBLISHED | ARCHIVED']
+
+  estimated_duration_minutes int
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+
+Table journey_items {
+  id uuid [pk]
+
+  journey_id uuid [not null]
+
+  place_id uuid
+  event_id uuid
+  community_id uuid
+
+  position int [not null]
+
+  title varchar(200)
+  note text
+
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    (journey_id, position) [unique]
+    place_id
+    event_id
+    community_id
+  }
+}
+
+
+Table journey_media {
+  journey_id uuid [not null]
+  media_id uuid [not null]
+
+  sort_order int [default: 0]
+  is_cover boolean [default: false]
+
+  indexes {
+    (journey_id, media_id) [pk]
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// SAVES / COLLECTIONS
+////////////////////////////////////////////////////////////
+
+Table collections {
+  id uuid [pk]
+
+  user_id uuid [not null]
+
+  name varchar(150) [not null]
+  description text
+
+  visibility varchar(30) [not null, note: 'PUBLIC | PRIVATE']
+
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    user_id
+    visibility
+  }
+}
+
+
+// A saved item points to exactly one target.
+// Application/database CHECK constraint:
+// exactly one of place_id/event_id/community_id/journey_id must be non-null.
+Table saved_items {
+  id uuid [pk]
+
+  user_id uuid [not null]
+
+  place_id uuid
+  event_id uuid
+  community_id uuid
+  journey_id uuid
+
+  created_at timestamp
+
+  indexes {
+    user_id
+    place_id
+    event_id
+    community_id
+    journey_id
+  }
+}
+
+
+Table collection_items {
+  collection_id uuid [not null]
+
+  saved_item_id uuid [not null]
+
+  created_at timestamp
+
+  indexes {
+    (collection_id, saved_item_id) [pk]
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// SOCIAL / FOLLOW
+////////////////////////////////////////////////////////////
+
+Table follows {
+  follower_id uuid [not null]
+  following_id uuid [not null]
+
+  created_at timestamp
+
+  indexes {
+    (follower_id, following_id) [pk]
+    following_id
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// MODERATION / REPORTING
+////////////////////////////////////////////////////////////
+
+// Generic target is intentional here because reports can target
+// reviews, photos, posts, comments, events, places, users, etc.
+Table reports {
+  id uuid [pk]
+
+  reporter_id uuid [not null]
+
+  target_type varchar(50) [not null, note: 'USER | PLACE | BUSINESS | EVENT | REVIEW | MEDIA | POST | COMMENT | COMMUNITY | JOURNEY']
+  target_id uuid [not null]
+
+  reason varchar(100) [not null]
+  description text
+
+  status varchar(30) [not null, note: 'OPEN | IN_REVIEW | RESOLVED | DISMISSED']
+
+  assigned_to uuid
+
+  resolved_at timestamp
+
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    reporter_id
+    assigned_to
+    (target_type, target_id)
+    status
+  }
+}
+
+
+Table moderation_actions {
+  id uuid [pk]
+
+  moderator_id uuid [not null]
+
+  report_id uuid
+
+  target_type varchar(50) [not null]
+  target_id uuid [not null]
+
+  action varchar(50) [not null, note: 'HIDE | REMOVE | RESTORE | WARN | RESTRICT | SUSPEND | REJECT | APPROVE']
+
+  reason text
+
+  metadata json
+
+  created_at timestamp
+
+  indexes {
+    moderator_id
+    report_id
+    (target_type, target_id)
+    action
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// USER RESTRICTIONS
+////////////////////////////////////////////////////////////
+
+Table user_restrictions {
+  id uuid [pk]
+
+  user_id uuid [not null]
+  created_by uuid [not null]
+
+  type varchar(30) [not null, note: 'WARNING | COMMENT_RESTRICTION | POST_RESTRICTION | EVENT_RESTRICTION | SUSPENSION']
+
+  reason text
+
+  starts_at timestamp [not null]
+  ends_at timestamp
+
+  active boolean [not null, default: true]
+
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    user_id
+    type
+    active
+    starts_at
+    ends_at
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// NOTIFICATIONS
+////////////////////////////////////////////////////////////
+
+Table notifications {
+  id uuid [pk]
+
+  user_id uuid [not null]
+  actor_id uuid
+
+  type varchar(50) [not null]
+
+  title varchar(200) [not null]
+  body text
+
+  entity_type varchar(50)
+  entity_id uuid
+
+  read_at timestamp
+
+  created_at timestamp
+
+  indexes {
+    user_id
+    read_at
+    created_at
+    (entity_type, entity_id)
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// AUDIT LOG
+////////////////////////////////////////////////////////////
+
+// Immutable operational/security history.
+Table audit_logs {
+  id uuid [pk]
+
+  actor_id uuid
+
+  action varchar(100) [not null]
+
+  resource_type varchar(50) [not null]
+  resource_id uuid
+
+  old_values json
+  new_values json
+
+  ip_address varchar(100)
+  user_agent text
+
+  created_at timestamp [not null]
+
+  indexes {
+    actor_id
+    action
+    (resource_type, resource_id)
+    created_at
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// RELATIONSHIPS
+////////////////////////////////////////////////////////////
+
+
+// RBAC
+Ref: user_roles.user_id > users.id
+Ref: user_roles.role_id > roles.id
+
+Ref: role_permissions.role_id > roles.id
+Ref: role_permissions.permission_id > permissions.id
+
+
+// Authentication
+Ref: accounts.user_id > users.id
+Ref: sessions.user_id > users.id
+
+
+// Geography
+Ref: users.city_id > cities.id
+
+Ref: categories.parent_id > categories.id
+
+
+// Business
+Ref: business_members.business_id > businesses.id
+Ref: business_members.user_id > users.id
+
+Ref: business_claims.business_id > businesses.id
+Ref: business_claims.submitted_by > users.id
+Ref: business_claims.reviewed_by > users.id
+
+Ref: business_verifications.business_id > businesses.id
+Ref: business_verifications.claim_id > business_claims.id
+Ref: business_verifications.verified_by > users.id
+
+
+// Places
+Ref: places.business_id > businesses.id
+Ref: places.city_id > cities.id
+Ref: places.category_id > categories.id
+Ref: places.created_by > users.id
+Ref: places.updated_by > users.id
+
+Ref: place_tags.place_id > places.id
+Ref: place_tags.tag_id > tags.id
+
+Ref: place_facilities.place_id > places.id
+Ref: place_facilities.facility_id > facilities.id
+
+Ref: place_opening_hours.place_id > places.id
+
+
+// Menus
+Ref: menus.place_id > places.id
+Ref: menu_items.menu_id > menus.id
+
+
+// Media
+Ref: media.uploaded_by > users.id
+
+Ref: place_media.place_id > places.id
+Ref: place_media.media_id > media.id
+
+Ref: business_media.business_id > businesses.id
+Ref: business_media.media_id > media.id
+
+
+// Events
+Ref: events.organizer_id > users.id
+Ref: events.place_id > places.id
+Ref: events.city_id > cities.id
+Ref: events.category_id > categories.id
+
+Ref: event_schedules.event_id > events.id
+
+Ref: event_tags.event_id > events.id
+Ref: event_tags.tag_id > tags.id
+
+Ref: event_media.event_id > events.id
+Ref: event_media.media_id > media.id
+
+Ref: rsvps.event_id > events.id
+Ref: rsvps.user_id > users.id
+
+
+// Ticketing
+Ref: ticket_types.event_id > events.id
+
+Ref: orders.user_id > users.id
+Ref: orders.event_id > events.id
+
+Ref: order_items.order_id > orders.id
+Ref: order_items.ticket_type_id > ticket_types.id
+
+Ref: payments.order_id > orders.id
+
+Ref: tickets.order_item_id > order_items.id
+Ref: tickets.user_id > users.id
+Ref: tickets.event_id > events.id
+
+
+// Check-in
+Ref: check_ins.user_id > users.id
+Ref: check_ins.place_id > places.id
+Ref: check_ins.event_id > events.id
+Ref: check_ins.ticket_id > tickets.id
+Ref: check_ins.checked_in_by > users.id
+
+
+// Reviews
+Ref: reviews.user_id > users.id
+Ref: reviews.place_id > places.id
+
+Ref: review_photos.review_id > reviews.id
+Ref: review_photos.media_id > media.id
+
+
+// Communities
+Ref: communities.created_by > users.id
+Ref: communities.city_id > cities.id
+Ref: communities.category_id > categories.id
+
+Ref: community_members.community_id > communities.id
+Ref: community_members.user_id > users.id
+
+Ref: community_posts.community_id > communities.id
+Ref: community_posts.author_id > users.id
+
+Ref: post_comments.post_id > community_posts.id
+Ref: post_comments.author_id > users.id
+Ref: post_comments.parent_comment_id > post_comments.id
+
+Ref: community_events.community_id > communities.id
+Ref: community_events.event_id > events.id
+
+
+// Journeys
+Ref: journeys.created_by > users.id
+Ref: journeys.community_id > communities.id
+Ref: journeys.city_id > cities.id
+Ref: journeys.category_id > categories.id
+
+Ref: journey_items.journey_id > journeys.id
+Ref: journey_items.place_id > places.id
+Ref: journey_items.event_id > events.id
+Ref: journey_items.community_id > communities.id
+
+Ref: journey_media.journey_id > journeys.id
+Ref: journey_media.media_id > media.id
+
+
+// Collections / Saves
+Ref: collections.user_id > users.id
+
+Ref: saved_items.user_id > users.id
+Ref: saved_items.place_id > places.id
+Ref: saved_items.event_id > events.id
+Ref: saved_items.community_id > communities.id
+Ref: saved_items.journey_id > journeys.id
+
+Ref: collection_items.collection_id > collections.id
+Ref: collection_items.saved_item_id > saved_items.id
+
+
+// Social
+Ref: follows.follower_id > users.id
+Ref: follows.following_id > users.id
+
+
+// Moderation
+Ref: reports.reporter_id > users.id
+Ref: reports.assigned_to > users.id
+
+Ref: moderation_actions.moderator_id > users.id
+Ref: moderation_actions.report_id > reports.id
+
+Ref: user_restrictions.user_id > users.id
+Ref: user_restrictions.created_by > users.id
+
+
+// Notifications
+Ref: notifications.user_id > users.id
+Ref: notifications.actor_id > users.id
+
+
+// Audit
+Ref: audit_logs.actor_id > users.id

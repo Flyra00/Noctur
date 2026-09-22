@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary-fixed":"#ffdad3","outline-variant":"#e0bfb9","on-primary-fixed-variant":"#891e07","inverse-on-surface":"#f1f1ef","on-surface-variant":"#58413c","surface-variant":"#e3e2e0","primary-container":"#c84b31","surface-container-highest":"#e3e2e0","tertiary-container":"#74747d","on-error-container":"#93000a","on-secondary-fixed-variant":"#47464a","background":"#faf9f7","primary":"#a6331b","surface-bright":"#faf9f7","surface-container-high":"#e9e8e6","primary-fixed-dim":"#ffb4a4","surface-container":"#efeeec","inverse-surface":"#2f3130","on-tertiary-fixed-variant":"#46464e","on-background":"#1a1c1b","surface-tint":"#aa361e","on-secondary-container":"#656467","on-tertiary-container":"#fffcff","on-primary":"#ffffff","secondary":"#5f5e61","on-tertiary-fixed":"#1a1b22","outline":"#8c716b","on-tertiary":"#ffffff","tertiary":"#5b5b64","on-primary-fixed":"#3e0500","secondary-fixed":"#e4e1e5","tertiary-fixed":"#e3e1ec","on-error":"#ffffff","inverse-primary":"#ffb4a4","on-primary-container":"#fffbff","on-secondary":"#ffffff","on-secondary-fixed":"#1b1b1e","secondary-fixed-dim":"#c8c6c9","error-container":"#ffdad6","on-surface":"#1a1c1b","secondary-container":"#e4e1e5","surface":"#faf9f7","tertiary-fixed-dim":"#c6c5cf","error":"#ba1a1a","surface-dim":"#dadad8","surface-container-lowest":"#ffffff","surface-container-low":"#f4f3f1"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-sm":"0.5rem","space-md":"0.75rem","gutter":"0.75rem","space-xs":"0.25rem","space-lg":"1rem","margin-desktop":"1.5rem","gutter-desktop":"1rem","margin":"1rem","space-xl":"1.5rem"},fontFamily:{"headline-lg":["Plus Jakarta Sans"],"body-md":["Inter"],"data-mono":["Inter"],"display-sm":["Plus Jakarta Sans"],"label-sm":["Inter"],"label-lg":["Inter"],"label-md":["Inter"],"body-lg":["Inter"],"body-sm":["Inter"],"headline-md":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"]},fontSize:{"headline-lg":["20px",{lineHeight:"28px",letterSpacing:"-0.015em",fontWeight:"700"}],"body-md":["13px",{lineHeight:"18px",fontWeight:"400"}],"data-mono":["12px",{lineHeight:"16px",letterSpacing:"-0.01em",fontWeight:"500"}],"display-sm":["24px",{lineHeight:"32px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-sm":["10px",{lineHeight:"12px",letterSpacing:"0.05em",fontWeight:"600"}],"label-lg":["13px",{lineHeight:"16px",fontWeight:"500"}],"label-md":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"600"}],"body-lg":["14px",{lineHeight:"22px",fontWeight:"400"}],"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"headline-md":["16px",{lineHeight:"24px",letterSpacing:"-0.01em",fontWeight:"600"}],"headline-sm":["14px",{lineHeight:"20px",letterSpacing:"-0.005em",fontWeight:"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-low border-r border-surface-container-highest z-40 flex flex-col justify-between select-none"><div class="flex flex-col h-full overflow-hidden"><div class="h-11 px-3 flex items-center gap-2 border-b border-surface-container-highest bg-surface-container-low shrink-0"><img alt="RasaKota Ops Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UDX-t83ewhjCl-Tj_3zDNFC4sRwrpkMDsvq-gUYS7yCNW0nZecUlKZmRXxMpgAj6JW2Je-03wTCvCL_2-EuOOK42R2SIRqaLNHxUQoY-V_p7tkWqsa_75EcMUlcdZeKSwe3DBmFVSzUcGhMkkUoTjxzhfJehvDzt5PRGY0Aw5opIetBmTDq1JKWajrbP2sQb7IwyMc6CZpxZFlBdmZr2MmPp9lBoPAo3sJRi71OzyTkneGftW-f1j8VqHb"/><div class="flex items-center gap-1.5 min-w-0"><span class="font-headline-sm text-headline-sm font-semibold tracking-tight text-on-surface truncate">RasaKota</span><span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-data-mono text-label-sm border border-outline-variant/40 uppercase shrink-0">Ops</span></div></div><div class="flex-1 overflow-y-auto px-2 py-2.5 space-y-4"><section><div><span class="px-2 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Overview</span></div><nav class="mt-1 space-y-0.5" data-active-classes="bg-surface-container-highest text-on-surface font-semibold border-l-2 border-primary"><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="overview" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">dashboard</span><span class="truncate">Overview</span></div></a></nav></section><section><div><span class="px-2 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Discovery Operations</span></div><nav class="mt-1 space-y-0.5" data-active-classes="bg-surface-container-highest text-on-surface font-semibold border-l-2 border-primary"><a aria-current="page" class="group flex items-center justify-between px-2 py-1.5 rounded-sm transition-colors bg-surface-container-highest text-on-surface font-semibold border-l-2 border-primary" data-path="places" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">location_on</span><span class="truncate">Places</span></div><span class="font-data-mono text-label-sm px-1.5 py-0.2 rounded bg-surface-container text-on-surface-variant border border-outline-variant/30">2.4k</span></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="businesses-and-claims" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">storefront</span><span class="truncate">Businesses &amp; Claims</span></div><span class="font-data-mono text-label-sm px-1.5 py-0.2 rounded bg-secondary-container text-on-secondary-fixed font-semibold">12</span></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="events-and-approvals" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">event_available</span><span class="truncate">Events &amp; Approvals</span></div><span class="font-data-mono text-label-sm px-1.5 py-0.2 rounded bg-secondary-container text-on-secondary-fixed font-semibold">8</span></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="communities" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">diversity_3</span><span class="truncate">Communities</span></div></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="culinary-journeys" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">restaurant_menu</span><span class="truncate">Culinary Journeys</span></div></a></nav></section><section><div><span class="px-2 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Moderation &amp; Quality</span></div><nav class="mt-1 space-y-0.5" data-active-classes="bg-surface-container-highest text-on-surface font-semibold border-l-2 border-primary"><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="moderation-queue" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">rule</span><span class="truncate">Moderation Queue</span></div><span class="font-data-mono text-label-sm px-1.5 py-0.2 rounded bg-primary-container text-on-primary font-semibold">17</span></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="reviews-and-ratings" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">rate_review</span><span class="truncate">Reviews &amp; Ratings</span></div></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="photos-and-media" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">photo_library</span><span class="truncate">Photos &amp; Media</span></div></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="community-posts" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">dynamic_feed</span><span class="truncate">Community Posts</span></div></a></nav></section><section><div><span class="px-2 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Community &amp; Users</span></div><nav class="mt-1 space-y-0.5" data-active-classes="bg-surface-container-highest text-on-surface font-semibold border-l-2 border-primary"><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="users-directory" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">people</span><span class="truncate">Users Directory</span></div></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="event-organizers" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">badge</span><span class="truncate">Event Organizers</span></div></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="business-owners" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">domain</span><span class="truncate">Business Owners</span></div></a></nav></section><section><div><span class="px-2 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Intelligence &amp; System</span></div><nav class="mt-1 space-y-0.5" data-active-classes="bg-surface-container-highest text-on-surface font-semibold border-l-2 border-primary"><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="platform-analytics" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">monitoring</span><span class="truncate">Platform Analytics</span></div></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="audit-logs" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">receipt_long</span><span class="truncate">Audit Logs</span></div></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="system-settings" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">settings</span><span class="truncate">System Settings</span></div></a></nav></section></div><div class="p-2.5 border-t border-surface-container-highest bg-surface-container-low shrink-0 space-y-2"><div class="flex items-center justify-between px-1.5"><div class="flex items-center gap-1.5"><span class="h-1.5 w-1.5 rounded-full bg-emerald-600"></span><span class="font-data-mono text-label-sm text-on-surface-variant">API: Normal</span></div><span class="font-data-mono text-label-sm text-secondary">99.98%</span></div><a class="flex items-center justify-between px-2 py-1 rounded bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:text-on-surface transition-colors" data-path="command-menu" href="#"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px] text-secondary">terminal</span><span class="font-data-mono text-label-sm">Command Menu</span></div><kbd class="font-data-mono text-[9px] px-1 py-0.5 rounded bg-surface-container-lowest border border-outline-variant/40 text-secondary">⌘K</kbd></a></div></div></aside><div class="pl-60"><header class="fixed top-0 left-60 right-0 h-11 bg-surface-container-lowest border-b border-surface-container-highest z-30 px-4 flex items-center justify-between gap-4"><div class="flex items-center gap-2.5 shrink-0"><span class="font-data-mono text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant border border-outline-variant/40 uppercase tracking-tight">PRODUCTION ID-JKT-01</span></div><div class="flex-1 max-w-xl"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-2.5 text-[16px] text-secondary pointer-events-none">search</span><input class="w-full h-7 pl-8 pr-12 rounded bg-surface-container-low border border-outline-variant/50 font-body-sm text-body-sm text-on-surface placeholder:text-secondary focus:outline-none cursor-pointer hover:bg-surface-container transition-colors" placeholder="Search users, places, events, communities, or moderation IDs... (Press ⌘K)" readonly="" type="text"/><kbd class="absolute right-2 font-data-mono text-[10px] px-1 py-0.2 rounded bg-surface-container-lowest border border-outline-variant/50 text-secondary pointer-events-none">⌘K</kbd></div></div><div class="flex items-center gap-3 shrink-0"><div class="flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-low border border-outline-variant/30"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span></span><span class="font-data-mono text-label-sm text-on-surface uppercase font-semibold">Live Ops</span></div><button class="relative p-1 rounded hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">notifications</span><span class="absolute -top-0.5 -right-0.5 font-data-mono text-[9px] px-1 rounded-full bg-primary text-on-primary font-semibold leading-tight">14</span></button><div class="flex items-center gap-1 font-data-mono text-label-sm text-secondary border-l border-surface-container-highest pl-3"><span class="material-symbols-outlined text-[14px]">schedule</span><span>WIB (UTC+7) 14:32</span></div><div class="flex items-center gap-2 border-l border-surface-container-highest pl-3 cursor-pointer hover:opacity-90"><img alt="Profile" class="w-7 h-7 rounded-full object-cover border border-outline-variant/50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwPz6EdFOT5QGsMMp26it9yO9c7jniDlv96BDMjI47nc_3zHUGDGBrRv31XohmjNNgGIq2eo2ztnGRoU_joW-y9AXXaMV9IClDz4hW_kN4yv0pTBSCoi1edEDp9tRwipbhzTufDRHQKQ7wl7ctTnMxp53woTVRNh-Xc4rd94plwtubrUZCBPezOfEmbBsxx7lbEb8NbxFljPX9X1wIBrVNO7hFf58brOb1GT64Fe2qUAY--Oee8FF_1w"/><div class="flex flex-col text-left"><span class="font-body-sm text-body-sm font-semibold leading-tight text-on-surface">Dian Sastrowardoyo</span><div class="flex items-center gap-1"><span class="font-label-sm text-[9px] px-1 py-0.2 rounded bg-surface-container text-on-surface-variant font-medium uppercase">Platform Admin</span></div></div><span class="material-symbols-outlined text-[16px] text-secondary">expand_more</span></div></div></header><main class="relative pt-11 w-full bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="p-6 space-y-5 max-w-[1720px] mx-auto w-full">
+<!-- Top Action Breadcrumbs & Header -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-surface-container-lowest p-5 rounded-lg shadow-sm">
+<div class="space-y-1">
+<div class="flex items-center gap-2 text-secondary font-label-md uppercase tracking-wider">
+<span>Discovery Operations</span>
+<span class="material-symbols-outlined text-[13px]">chevron_right</span>
+<span class="text-primary font-semibold">National Registry</span>
+<span class="material-symbols-outlined text-[13px]">chevron_right</span>
+<span class="font-data-mono text-label-sm px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface">NODE: JKT-BDG-SBY</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Places Directory &amp; Venues</h1>
+<p class="font-body-md text-body-md text-secondary">
+          Manage 8,640 indexed culinary, coffee, hangout, and cultural destinations across Indonesia with real-time SIUP verification telemetry.
+        </p>
+</div>
+<div class="flex items-center gap-2.5 shrink-0">
+<button class="h-8 px-3 rounded bg-surface-container-low hover:bg-surface-container text-on-surface font-body-sm font-semibold flex items-center gap-1.5 transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">download</span>
+<span>Export Places (CSV)</span>
+</button>
+<button class="h-8 px-3.5 rounded bg-primary-container hover:bg-primary text-on-primary font-body-sm font-semibold flex items-center gap-1.5 transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">add_location_alt</span>
+<span>+ Add New Place (Manual Index)</span>
+</button>
+</div>
+</div>
+<!-- Live Telemetry KPI Bar -->
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+<div class="bg-surface-container-lowest p-3 rounded-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-secondary uppercase tracking-wider">Total Indexed</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">storefront</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">8,640</span>
+<span class="font-data-mono text-[10px] text-emerald-700 bg-emerald-50 px-1 py-0.5 rounded">+142 this wk</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-secondary uppercase tracking-wider">Verified Owners</span>
+<span class="material-symbols-outlined text-[16px] text-emerald-600">verified</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">5,412</span>
+<span class="font-data-mono text-[10px] text-secondary">62.6% coverage</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-secondary uppercase tracking-wider">Claims Pending</span>
+<span class="material-symbols-outlined text-[16px] text-amber-600">pending_actions</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md font-bold text-amber-700">48</span>
+<span class="font-data-mono text-[10px] text-amber-800 bg-amber-50 px-1 py-0.5 rounded">Action needed</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-secondary uppercase tracking-wider">Heritage / Unclaimed</span>
+<span class="material-symbols-outlined text-[16px] text-blue-600">account_balance</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">2,918</span>
+<span class="font-data-mono text-[10px] text-secondary">Community curated</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-secondary uppercase tracking-wider">Active Open Now</span>
+<span class="material-symbols-outlined text-[16px] text-emerald-600">schedule</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">6,804</span>
+<span class="font-data-mono text-[10px] text-secondary">WIB Realtime</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-secondary uppercase tracking-wider">Flagged Geocodes</span>
+<span class="material-symbols-outlined text-[16px] text-primary">wrong_location</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md font-bold text-primary">17</span>
+<span class="font-data-mono text-[10px] text-primary-fixed-variant bg-primary-fixed px-1 py-0.5 rounded">Telemetry alert</span>
+</div>
+</div>
+</div>
+<!-- Filter Console -->
+<div class="bg-surface-container-lowest rounded-lg p-4 space-y-3 shadow-sm">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+<!-- Search bar -->
+<div class="md:col-span-4 relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-[18px] text-secondary pointer-events-none">search</span>
+<input class="w-full h-8 pl-9 pr-8 rounded bg-surface-container-low text-on-surface font-body-sm placeholder:text-secondary focus:outline-none focus:bg-surface transition-colors" placeholder="Search by place name, address, or Place ID (e.g. PLC-1049)..." type="text" value="Jakarta Selatan"/>
+<span class="material-symbols-outlined absolute right-2.5 text-[15px] text-secondary cursor-pointer hover:text-on-surface">backspace</span>
+</div>
+<!-- Category Dropdown -->
+<div class="md:col-span-2">
+<div class="relative">
+<select class="w-full h-8 pl-2.5 pr-7 rounded bg-surface-container-low font-body-sm text-on-surface appearance-none focus:outline-none cursor-pointer">
+<option>Category: All Categories</option>
+<option selected="">Café &amp; Coffee</option>
+<option>Warung &amp; Kaki Lima</option>
+<option>Fine Dining &amp; Bistro</option>
+<option>Bar &amp; Nightlife</option>
+<option>Indonesian Heritage</option>
+<option>Bakery &amp; Dessert</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2 text-[16px] text-secondary pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- City Dropdown -->
+<div class="md:col-span-2">
+<div class="relative">
+<select class="w-full h-8 pl-2.5 pr-7 rounded bg-surface-container-low font-body-sm text-on-surface appearance-none focus:outline-none cursor-pointer">
+<option>City: Jabodetabek (All)</option>
+<option selected="">Jakarta Selatan</option>
+<option>Jakarta Pusat</option>
+<option>Jakarta Barat</option>
+<option>Bandung Kota</option>
+<option>Surabaya Metro</option>
+<option>Bali (Badung/Denpasar)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2 text-[16px] text-secondary pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Status Filter -->
+<div class="md:col-span-2">
+<div class="relative">
+<select class="w-full h-8 pl-2.5 pr-7 rounded bg-surface-container-low font-body-sm text-on-surface appearance-none focus:outline-none cursor-pointer">
+<option>Status: All Statuses</option>
+<option selected="">Active (Buka/Open)</option>
+<option>Pending Verification</option>
+<option>Suspended</option>
+<option>Temporarily Closed</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2 text-[16px] text-secondary pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Ownership / Verification Filter -->
+<div class="md:col-span-2">
+<div class="relative">
+<select class="w-full h-8 pl-2.5 pr-7 rounded bg-surface-container-low font-body-sm text-on-surface appearance-none focus:outline-none cursor-pointer">
+<option>Claim: All Types</option>
+<option>Verified Owner</option>
+<option>Claim Under Review</option>
+<option>Unclaimed Community</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2 text-[16px] text-secondary pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Active Filter Pills + Fast Clears -->
+<div class="flex flex-wrap items-center justify-between pt-1 gap-2">
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="font-label-sm text-[10px] uppercase text-secondary font-semibold mr-1">Active Criteria:</span>
+<span class="inline-flex items-center gap-1 h-6 px-2 rounded-sm bg-surface-container text-on-surface font-data-mono text-[11px]">
+<span>City: Jakarta Selatan</span>
+<button class="hover:text-primary transition-colors flex items-center" type="button"><span class="material-symbols-outlined text-[13px]">close</span></button>
+</span>
+<span class="inline-flex items-center gap-1 h-6 px-2 rounded-sm bg-surface-container text-on-surface font-data-mono text-[11px]">
+<span>Category: Café &amp; Coffee</span>
+<button class="hover:text-primary transition-colors flex items-center" type="button"><span class="material-symbols-outlined text-[13px]">close</span></button>
+</span>
+<span class="inline-flex items-center gap-1 h-6 px-2 rounded-sm bg-surface-container text-on-surface font-data-mono text-[11px]">
+<span>Status: Active</span>
+<button class="hover:text-primary transition-colors flex items-center" type="button"><span class="material-symbols-outlined text-[13px]">close</span></button>
+</span>
+<button class="h-6 px-2 font-label-sm text-[11px] text-primary hover:underline uppercase tracking-wider font-semibold ml-1" type="button">
+            Reset All
+          </button>
+</div>
+<div class="flex items-center gap-3 text-secondary font-body-sm">
+<span>Sort by:</span>
+<span class="font-semibold text-on-surface cursor-pointer flex items-center gap-0.5">
+            Updated Date (Newest)
+            <span class="material-symbols-outlined text-[15px]">arrow_downward</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Batch Action Shelf -->
+<div class="bg-surface-container-high px-4 py-2 rounded flex flex-wrap items-center justify-between gap-3 text-on-surface shadow-sm">
+<div class="flex items-center gap-3">
+<label class="flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="w-3.5 h-3.5 accent-primary rounded cursor-pointer" type="checkbox"/>
+<span class="font-data-mono text-body-sm font-semibold text-on-surface">3 places selected</span>
+</label>
+<span class="text-outline-variant font-data-mono">|</span>
+<span class="font-label-sm text-[11px] uppercase tracking-wider text-secondary">Batch Operations:</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-7 px-2.5 rounded bg-surface-container-lowest hover:bg-surface-container font-label-md text-label-md text-on-surface flex items-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[15px] text-emerald-700">verified</span>
+<span>Verify Selected</span>
+</button>
+<button class="h-7 px-2.5 rounded bg-surface-container-lowest hover:bg-surface-container font-label-md text-label-md text-on-surface flex items-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[15px] text-secondary">category</span>
+<span>Assign Category</span>
+</button>
+<button class="h-7 px-2.5 rounded bg-surface-container-lowest hover:bg-surface-container font-label-md text-label-md text-on-surface flex items-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[15px] text-secondary">file_download</span>
+<span>Export (3)</span>
+</button>
+<button class="h-7 px-2.5 rounded bg-surface-container-lowest hover:bg-surface-container font-label-md text-label-md text-on-surface flex items-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[15px] text-secondary">label</span>
+<span>Batch Tag</span>
+</button>
+<button class="h-7 px-2 rounded bg-error-container hover:bg-red-200 font-label-md text-label-md text-on-error-container flex items-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[15px]">block</span>
+<span>Suspend</span>
+</button>
+</div>
+</div>
+<!-- High-Density Data Table Card -->
+<div class="bg-surface-container-lowest rounded-lg shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-secondary font-label-md text-label-md uppercase tracking-wider h-9 select-none">
+<th class="w-10 px-3 text-center">
+<input class="w-3.5 h-3.5 accent-primary rounded cursor-pointer" type="checkbox"/>
+</th>
+<th class="w-44 px-3">Place ID / Photo</th>
+<th class="min-w-[260px] px-3">Place &amp; Cuisine Taxonomy</th>
+<th class="min-w-[240px] px-3">Location &amp; Administrative Area</th>
+<th class="w-36 px-3">Rating / Reviews</th>
+<th class="w-48 px-3">Status &amp; Operating Hours</th>
+<th class="w-60 px-3">Ownership / Business Entity</th>
+<th class="w-28 px-3 text-right">Updated</th>
+<th class="w-36 px-4 text-center">Quick Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-sm text-on-surface">
+<!-- ROW 1: Kopi Sore Senopati (Selected) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors bg-surface-container-low/20">
+<td class="px-3 py-2.5 text-center">
+<input checked="" class="w-3.5 h-3.5 accent-primary rounded cursor-pointer" type="checkbox"/>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex items-center gap-2.5">
+<div class="w-11 h-11 rounded-sm overflow-hidden bg-surface-container shrink-0 shadow-sm relative">
+<img class="w-full h-full object-cover" data-alt="Modern artisanal Indonesian coffee shop in Senopati Jakarta, minimalist concrete counter, warm terracotta espresso machine, tropical foliage indoors, morning sunlight, architectural photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIsbIm-zhcUQ2hXcx0kY6tsuvCN_VEanIpwfnz9bbSXgAnc7n5-QNwAnWCZjF6dVlVZR8YJfPTzqPcrNLWWnMxRlnIvPaSF7F8c1WFq32iiRsTS8W_vnR1G3t70ORc09rkLrZt6f-jVTBInWDCqRew5kw2Q4EeXiHEYqM5oj5ViKKvoRrdzM2vRDT0EzKR1StiJMeslPNw5RJxEJeVayd7aq4Xntv_xrsEmRgnyq3PdDOzyPiW7YIppA"/>
+<span class="absolute bottom-0 right-0 bg-black/70 text-white font-data-mono text-[8px] px-1">4.8</span>
+</div>
+<div class="flex flex-col">
+<span class="font-data-mono text-label-sm font-semibold text-primary">PLC-8901</span>
+<span class="font-data-mono text-[10px] text-secondary">GEO: -6.238, 106.811</span>
+</div>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface hover:text-primary cursor-pointer transition-colors">Kopi Sore Senopati</span>
+<span class="material-symbols-outlined text-[14px] text-emerald-600" title="Editorial Pick 2026">workspace_premium</span>
+</div>
+<div class="flex flex-wrap items-center gap-1 text-[11px] text-secondary">
+<span class="px-1.5 py-0.2 bg-surface-container rounded font-label-sm text-on-surface-variant">Specialty Coffee</span>
+<span class="px-1.5 py-0.2 bg-surface-container rounded font-label-sm text-on-surface-variant">Pastry Artisan</span>
+<span class="px-1.5 py-0.2 bg-surface-container rounded font-label-sm text-on-surface-variant">WFH Friendly</span>
+</div>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col">
+<span class="font-body-sm text-on-surface truncate max-w-[240px]">Jl. Senopati No. 41, Kebayoran Baru</span>
+<span class="font-data-mono text-[11px] text-secondary">Jakarta Selatan · DKI Jakarta 12190</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col">
+<div class="flex items-center gap-1 font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[15px] text-amber-500 fill-current">star</span>
+<span>4.8</span>
+<span class="text-secondary font-normal font-data-mono text-[11px]">(1,240 ulasan)</span>
+</div>
+<span class="font-data-mono text-[10px] text-emerald-700">98% Positive Sentiment</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-800 w-max">
+<span class="h-1.5 w-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
+<span>Buka · 08:00 - 22:00 WIB</span>
+</span>
+<span class="font-data-mono text-[10px] text-secondary">Last verified today</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-900 w-max">
+<span class="material-symbols-outlined text-[13px] text-emerald-600">verified_user</span>
+<span>PT Rasa Kopi Nusantara</span>
+</span>
+<span class="font-data-mono text-[10px] text-secondary truncate">NIB: 9120003418291 · SIUP Verified</span>
+</div>
+</td>
+<td class="px-3 py-2.5 text-right font-data-mono text-[11px] text-secondary">
+                18 Sep 2026<br/><span class="text-[10px] text-on-surface-variant">14:12 WIB</span>
+</td>
+<td class="px-4 py-2.5">
+<div class="flex items-center justify-center gap-1">
+<button class="h-7 px-2 rounded bg-surface-container-low hover:bg-surface-container font-label-md text-label-md text-on-surface transition-colors" title="Edit Place Details" type="button">
+                    Edit
+                  </button>
+<button class="h-7 w-7 rounded bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface flex items-center justify-center transition-colors" title="View Public Destination Page" type="button">
+<span class="material-symbols-outlined text-[15px]">open_in_new</span>
+</button>
+<button class="h-7 w-7 rounded hover:bg-surface-container text-secondary hover:text-on-surface flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[17px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 2: Warung Nasi Bu Eha (Unclaimed Heritage) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="px-3 py-2.5 text-center">
+<input class="w-3.5 h-3.5 accent-primary rounded cursor-pointer" type="checkbox"/>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex items-center gap-2.5">
+<div class="w-11 h-11 rounded-sm overflow-hidden bg-surface-container shrink-0 shadow-sm relative">
+<img class="w-full h-full object-cover" data-alt="Traditional Sundanese warung food stall inside Pasar Cihapit Bandung, stainless steel dishes piled with pepes, ayam goreng rempah, sambal dadak, wooden benches, ambient warm market light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARv2sqnQ5sdv3h2SlhR9LfB5ASsnUb1EShFIpANnlP5OT6AaaUvu_PHvpBAT1y3WbA1Wi9OAOuimZUbz3_ZpYw70qBCtdwVlE0iIwSo-BwyqXoE-aBskNpGcBGh6DuGUulgSZTmkoSOIzu0lrqjWjqnkjqzlER1GBpFGMet1W5DBafCqBwxXuhhxdcF597B_sokuQbtnE8PiuvLh5gOYiOydQhqbzf-lSTB6eKrqdtnjLWZE0AxX6GgA"/>
+<span class="absolute bottom-0 right-0 bg-black/70 text-white font-data-mono text-[8px] px-1">4.9</span>
+</div>
+<div class="flex flex-col">
+<span class="font-data-mono text-label-sm font-semibold text-primary">PLC-8902</span>
+<span class="font-data-mono text-[10px] text-secondary">GEO: -6.907, 107.620</span>
+</div>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface hover:text-primary cursor-pointer transition-colors">Warung Nasi Bu Eha</span>
+<span class="px-1.5 py-0.2 rounded bg-amber-100 text-amber-900 font-label-sm text-[9px] uppercase tracking-wider font-semibold">Heritage Since 1947</span>
+</div>
+<div class="flex flex-wrap items-center gap-1 text-[11px] text-secondary">
+<span class="px-1.5 py-0.2 bg-surface-container rounded font-label-sm text-on-surface-variant">Sundanese Traditional</span>
+<span class="px-1.5 py-0.2 bg-surface-container rounded font-label-sm text-on-surface-variant">Pasar Culinary</span>
+</div>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col">
+<span class="font-body-sm text-on-surface truncate max-w-[240px]">Pasar Cihapit, Jl. Cihapit No. 8A</span>
+<span class="font-data-mono text-[11px] text-secondary">Bandung Wetan · Kota Bandung 40114</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col">
+<div class="flex items-center gap-1 font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[15px] text-amber-500 fill-current">star</span>
+<span>4.9</span>
+<span class="text-secondary font-normal font-data-mono text-[11px]">(3,410 ulasan)</span>
+</div>
+<span class="font-data-mono text-[10px] text-emerald-700">Legendary Status</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-800 w-max">
+<span class="h-1.5 w-1.5 rounded-full bg-emerald-600"></span>
+<span>Buka · 07:00 - 16:00 WIB</span>
+</span>
+<span class="font-data-mono text-[10px] text-secondary">Tutup Minggu</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-blue-50 text-blue-900 w-max">
+<span class="material-symbols-outlined text-[13px] text-blue-600">history_edu</span>
+<span>Unclaimed Heritage</span>
+</span>
+<span class="font-data-mono text-[10px] text-secondary">Protected Public Record</span>
+</div>
+</td>
+<td class="px-3 py-2.5 text-right font-data-mono text-[11px] text-secondary">
+                17 Sep 2026<br/><span class="text-[10px] text-on-surface-variant">09:44 WIB</span>
+</td>
+<td class="px-4 py-2.5">
+<div class="flex items-center justify-center gap-1">
+<button class="h-7 px-2 rounded bg-surface-container-low hover:bg-surface-container font-label-md text-label-md text-on-surface transition-colors" type="button">
+                    Edit
+                  </button>
+<button class="h-7 w-7 rounded bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[15px]">open_in_new</span>
+</button>
+<button class="h-7 w-7 rounded hover:bg-surface-container text-secondary hover:text-on-surface flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[17px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 3: Bebek Tugu Pahlawan Asli (Claim Pending) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="px-3 py-2.5 text-center">
+<input class="w-3.5 h-3.5 accent-primary rounded cursor-pointer" type="checkbox"/>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex items-center gap-2.5">
+<div class="w-11 h-11 rounded-sm overflow-hidden bg-surface-container shrink-0 shadow-sm relative">
+<img class="w-full h-full object-cover" data-alt="Indonesian fried duck street stall in Surabaya, dark crispy Bebek Goreng served with yellow seasoned rice, sambal korek and cucumber on brown greaseproof paper, bustling night market scene." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHPPbCuk2zgrp9XjJ8o8UKIYluP1GG1Lspt6rm8B5UBwWtfQRAJzZ1Tu_FftZ9i4yIKmBSBa0FGbH8xoNVtl_8lGlDGsnk2esmzq9xLr86Elih8xJx1bAQHqgFI9mAQLj3cDSLjuOzruuHpaGogQ2Cl8xhGKoZmJ4Aqi5-T15hp-vS6y5yfVzx2anNu16S2AgTOXhOigPxV_Yvk1OnqxhFj4TOT9ry4Is5yCitTVpyXit_gAn7Cy_TIA"/>
+<span class="absolute bottom-0 right-0 bg-black/70 text-white font-data-mono text-[8px] px-1">4.7</span>
+</div>
+<div class="flex flex-col">
+<span class="font-data-mono text-label-sm font-semibold text-primary">PLC-8903</span>
+<span class="font-data-mono text-[10px] text-secondary">GEO: -7.245, 112.738</span>
+</div>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface hover:text-primary cursor-pointer transition-colors">Bebek Tugu Pahlawan Asli</span>
+<div class="flex flex-wrap items-center gap-1 text-[11px] text-secondary">
+<span class="px-1.5 py-0.2 bg-surface-container rounded font-label-sm text-on-surface-variant">Bebek Goreng Madura</span>
+<span class="px-1.5 py-0.2 bg-surface-container rounded font-label-sm text-on-surface-variant">Sambal Hitam</span>
+</div>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col">
+<span class="font-body-sm text-on-surface truncate max-w-[240px]">Jl. Tembaan No. 17F, Bubutan</span>
+<span class="font-data-mono text-[11px] text-secondary">Kota Surabaya · Jawa Timur 60174</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col">
+<div class="flex items-center gap-1 font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[15px] text-amber-500 fill-current">star</span>
+<span>4.7</span>
+<span class="text-secondary font-normal font-data-mono text-[11px]">(2,180 ulasan)</span>
+</div>
+<span class="font-data-mono text-[10px] text-secondary">Tinggi Pengunjung Malam</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-800 w-max">
+<span class="h-1.5 w-1.5 rounded-full bg-emerald-600"></span>
+<span>Buka · 17:30 - 23:30 WIB</span>
+</span>
+<span class="font-data-mono text-[10px] text-secondary">Night Operating Shift</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-amber-50 text-amber-900 w-max">
+<span class="material-symbols-outlined text-[13px] text-amber-600">hourglass_top</span>
+<span>Claim Pending (SIUP Check)</span>
+</span>
+<span class="font-data-mono text-[10px] text-amber-800">Claimant: H. Mochamad Mansur</span>
+</div>
+</td>
+<td class="px-3 py-2.5 text-right font-data-mono text-[11px] text-secondary">
+                16 Sep 2026<br/><span class="text-[10px] text-on-surface-variant">18:02 WIB</span>
+</td>
+<td class="px-4 py-2.5">
+<div class="flex items-center justify-center gap-1">
+<button class="h-7 px-2 rounded bg-amber-100 hover:bg-amber-200 text-amber-900 font-label-md text-label-md transition-colors font-semibold" type="button">
+                    Review
+                  </button>
+<button class="h-7 w-7 rounded bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[15px]">open_in_new</span>
+</button>
+<button class="h-7 w-7 rounded hover:bg-surface-container text-secondary hover:text-on-surface flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[17px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 4: Pantjoran Tea House (Selected) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors bg-surface-container-low/20">
+<td class="px-3 py-2.5 text-center">
+<input checked="" class="w-3.5 h-3.5 accent-primary rounded cursor-pointer" type="checkbox"/>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex items-center gap-2.5">
+<div class="w-11 h-11 rounded-sm overflow-hidden bg-surface-container shrink-0 shadow-sm relative">
+<img class="w-full h-full object-cover" data-alt="Restored historic Chinese heritage building tea house in Glodok Old Batavia Jakarta, dark wooden louvered windows, ceramic teapots, red festive paper lanterns, atmospheric afternoon shadow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU3rN2jr87kdMLw7grUHjkhUX_NB3IRbHYHV173elSeK1l49wvtmFSLQ-LBpvISfNLluY7XILmKmW5ygkNDh9Oijr75Y41p7T2TBFHhAz52g1GeLnS8uF7dAPft0fR_4DzTqN84KT65qb8DRFiL4a9QgG3wJPSLK7Gp1Mprdt8k1-SB2U3dLoujMyQMor-GgkSKTnIvF-iLgB2b6mXi7CDBc2zqFScHndlb3S7xafJgClS9n5b1auBRQ"/>
+<span class="absolute bottom-0 right-0 bg-black/70 text-white font-data-mono text-[8px] px-1">4.8</span>
+</div>
+<div class="flex flex-col">
+<span class="font-data-mono text-label-sm font-semibold text-primary">PLC-8904</span>
+<span class="font-data-mono text-[10px] text-secondary">GEO: -6.141, 106.814</span>
+</div>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface hover:text-primary cursor-pointer transition-colors">Pantjoran Tea House</span>
+<span class="material-symbols-outlined text-[14px] text-primary" title="Cultural Landmark">museum</span>
+</div>
+<div class="flex flex-wrap items-center gap-1 text-[11px] text-secondary">
+<span class="px-1.5 py-0.2 bg-surface-container rounded font-label-sm text-on-surface-variant">Chinese Heritage Tea</span>
+<span class="px-1.5 py-0.2 bg-surface-container rounded font-label-sm text-on-surface-variant">Dim Sum &amp; Peranakan</span>
+</div>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col">
+<span class="font-body-sm text-on-surface truncate max-w-[240px]">Jl. Pancoran No. 4-6, Glodok</span>
+<span class="font-data-mono text-[11px] text-secondary">Taman Sari · Jakarta Barat 11120</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col">
+<div class="flex items-center gap-1 font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[15px] text-amber-500 fill-current">star</span>
+<span>4.8</span>
+<span class="text-secondary font-normal font-data-mono text-[11px]">(980 ulasan)</span>
+</div>
+<span class="font-data-mono text-[10px] text-emerald-700">Cultural Highlight</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-800 w-max">
+<span class="h-1.5 w-1.5 rounded-full bg-emerald-600"></span>
+<span>Buka · 07:30 - 20:00 WIB</span>
+</span>
+<span class="font-data-mono text-[10px] text-secondary">Traditional Afternoon Tea</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-900 w-max">
+<span class="material-symbols-outlined text-[13px] text-emerald-600">verified_user</span>
+<span>PT Pantjoran Tea Heritage</span>
+</span>
+<span class="font-data-mono text-[10px] text-secondary truncate">Akta Notaris AHU-0019284.AH</span>
+</div>
+</td>
+<td class="px-3 py-2.5 text-right font-data-mono text-[11px] text-secondary">
+                15 Sep 2026<br/><span class="text-[10px] text-on-surface-variant">11:20 WIB</span>
+</td>
+<td class="px-4 py-2.5">
+<div class="flex items-center justify-center gap-1">
+<button class="h-7 px-2 rounded bg-surface-container-low hover:bg-surface-container font-label-md text-label-md text-on-surface transition-colors" type="button">
+                    Edit
+                  </button>
+<button class="h-7 w-7 rounded bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[15px]">open_in_new</span>
+</button>
+<button class="h-7 w-7 rounded hover:bg-surface-container text-secondary hover:text-on-surface flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[17px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 5: Toko Kopi Tuku Cipete (Selected) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors bg-surface-container-low/20">
+<td class="px-3 py-2.5 text-center">
+<input checked="" class="w-3.5 h-3.5 accent-primary rounded cursor-pointer" type="checkbox"/>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex items-center gap-2.5">
+<div class="w-11 h-11 rounded-sm overflow-hidden bg-surface-container shrink-0 shadow-sm relative">
+<img class="w-full h-full object-cover" data-alt="Iconic Indonesian small coffee takeaway counter in Cipete Jakarta, iced brown sugar latte in clear takeaway cups, baristas in matching green aprons, dynamic urban crowd." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn1STXmAbKB_znJl4uBddsHXMP7F3InpVsS8vT56hcZBh5_pQj2Kzyo5OPun3EzyYnys2mkK2FespKcBkg1dlQ6_STjj92nXWZPlcKmBnlE_HZlcAioQds-59TGIS4HwiO_S_YIjvcjH7KIZAK7CsaRb3rSHoKSDsl9dF8hby1ufjZrP4Iwhdgk-ZdWNd1tcGdqxT7HTFKUzTYQMGV6JZQD9EoEUlxWQ6t-RD5koUSu9bf1OjQQo4m7w"/>
+<span class="absolute bottom-0 right-0 bg-black/70 text-white font-data-mono text-[8px] px-1">4.9</span>
+</div>
+<div class="flex flex-col">
+<span class="font-data-mono text-label-sm font-semibold text-primary">PLC-8905</span>
+<span class="font-data-mono text-[10px] text-secondary">GEO: -6.275, 106.797</span>
+</div>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface hover:text-primary cursor-pointer transition-colors">Toko Kopi Tuku Cipete</span>
+<span class="material-symbols-outlined text-[14px] text-emerald-600">verified</span>
+</div>
+<div class="flex flex-wrap items-center gap-1 text-[11px] text-secondary">
+<span class="px-1.5 py-0.2 bg-surface-container rounded font-label-sm text-on-surface-variant">Es Kopi Susu Tetangga</span>
+<span class="px-1.5 py-0.2 bg-surface-container rounded font-label-sm text-on-surface-variant">Pioneer Brand</span>
+</div>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col">
+<span class="font-body-sm text-on-surface truncate max-w-[240px]">Jl. Cipete Raya No. 7, Fatmawati</span>
+<span class="font-data-mono text-[11px] text-secondary">Cilandak · Jakarta Selatan 12410</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col">
+<div class="flex items-center gap-1 font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[15px] text-amber-500 fill-current">star</span>
+<span>4.9</span>
+<span class="text-secondary font-normal font-data-mono text-[11px]">(5,120 ulasan)</span>
+</div>
+<span class="font-data-mono text-[10px] text-emerald-700">Top 1% National Ranking</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-800 w-max">
+<span class="h-1.5 w-1.5 rounded-full bg-emerald-600"></span>
+<span>Buka · 07:00 - 21:00 WIB</span>
+</span>
+<span class="font-data-mono text-[10px] text-secondary">High Delivery Traffic</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-900 w-max">
+<span class="material-symbols-outlined text-[13px] text-emerald-600">verified_user</span>
+<span>PT Makna Membumi Nusantara</span>
+</span>
+<span class="font-data-mono text-[10px] text-secondary truncate">Verified Brand Multi-Unit</span>
+</div>
+</td>
+<td class="px-3 py-2.5 text-right font-data-mono text-[11px] text-secondary">
+                14 Sep 2026<br/><span class="text-[10px] text-on-surface-variant">17:40 WIB</span>
+</td>
+<td class="px-4 py-2.5">
+<div class="flex items-center justify-center gap-1">
+<button class="h-7 px-2 rounded bg-surface-container-low hover:bg-surface-container font-label-md text-label-md text-on-surface transition-colors" type="button">
+                    Edit
+                  </button>
+<button class="h-7 w-7 rounded bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[15px]">open_in_new</span>
+</button>
+<button class="h-7 w-7 rounded hover:bg-surface-container text-secondary hover:text-on-surface flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[17px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 6: Lucy In The Sky SCBD -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="px-3 py-2.5 text-center">
+<input class="w-3.5 h-3.5 accent-primary rounded cursor-pointer" type="checkbox"/>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex items-center gap-2.5">
+<div class="w-11 h-11 rounded-sm overflow-hidden bg-surface-container shrink-0 shadow-sm relative">
+<img class="w-full h-full object-cover" data-alt="Rooftop bar lounge in SCBD Jakarta skyline at twilight, bohemian glasshouse interior, botanical hanging plants, ambient fairy lighting, cocktails on granite high tables." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYocCpqy276ouPeOvuslfNtyjQOu9O_q4uUwRi_zj0TwuNcEgR6_bOIHcu0OE46Ms2cWrLNYoUUN5drYiJgrPb0FkIkM2vbBQdzN1khTQytrXiqpPO0aPmTxwPxox3FKi_UooETimt3nAPrWEoq8c5B9spGjR_Cz8tIGKL7ed8XE57Zsu93lmi3f-assKO3nrth3BuTJlBf3a3aDFmngcB9rHteF--th1KUB3vlghLrH9UWwrwHHLD9g"/>
+<span class="absolute bottom-0 right-0 bg-black/70 text-white font-data-mono text-[8px] px-1">4.6</span>
+</div>
+<div class="flex flex-col">
+<span class="font-data-mono text-label-sm font-semibold text-primary">PLC-8906</span>
+<span class="font-data-mono text-[10px] text-secondary">GEO: -6.226, 106.808</span>
+</div>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface hover:text-primary cursor-pointer transition-colors">Lucy In The Sky SCBD</span>
+</div>
+<div class="flex flex-wrap items-center gap-1 text-[11px] text-secondary">
+<span class="px-1.5 py-0.2 bg-surface-container rounded font-label-sm text-on-surface-variant">Rooftop Lounge</span>
+<span class="px-1.5 py-0.2 bg-surface-container rounded font-label-sm text-on-surface-variant">Craft Cocktails</span>
+<span class="px-1.5 py-0.2 bg-surface-container rounded font-label-sm text-on-surface-variant">Nightlife 21+</span>
+</div>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col">
+<span class="font-body-sm text-on-surface truncate max-w-[240px]">Fairgrounds SCBD Lot 14, Jl. Jend. Sudirman</span>
+<span class="font-data-mono text-[11px] text-secondary">Kebayoran Baru · Jakarta Selatan 12190</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col">
+<div class="flex items-center gap-1 font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[15px] text-amber-500 fill-current">star</span>
+<span>4.6</span>
+<span class="text-secondary font-normal font-data-mono text-[11px]">(1,850 ulasan)</span>
+</div>
+<span class="font-data-mono text-[10px] text-secondary">High Weekend Volume</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-800 w-max">
+<span class="h-1.5 w-1.5 rounded-full bg-emerald-600"></span>
+<span>Buka · 16:00 - 02:00 WIB</span>
+</span>
+<span class="font-data-mono text-[10px] text-secondary">ID &amp; Age Gate Active</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-900 w-max">
+<span class="material-symbols-outlined text-[13px] text-emerald-600">verified_user</span>
+<span>PT Lima Dua Lima Tiga Tbk</span>
+</span>
+<span class="font-data-mono text-[10px] text-secondary truncate">IDX Listed Entity (LUCY)</span>
+</div>
+</td>
+<td class="px-3 py-2.5 text-right font-data-mono text-[11px] text-secondary">
+                12 Sep 2026<br/><span class="text-[10px] text-on-surface-variant">22:05 WIB</span>
+</td>
+<td class="px-4 py-2.5">
+<div class="flex items-center justify-center gap-1">
+<button class="h-7 px-2 rounded bg-surface-container-low hover:bg-surface-container font-label-md text-label-md text-on-surface transition-colors" type="button">
+                    Edit
+                  </button>
+<button class="h-7 w-7 rounded bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[15px]">open_in_new</span>
+</button>
+<button class="h-7 w-7 rounded hover:bg-surface-container text-secondary hover:text-on-surface flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[17px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 7: Bakmi Gang Kelinci Pasar Baru -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="px-3 py-2.5 text-center">
+<input class="w-3.5 h-3.5 accent-primary rounded cursor-pointer" type="checkbox"/>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex items-center gap-2.5">
+<div class="w-11 h-11 rounded-sm overflow-hidden bg-surface-container shrink-0 shadow-sm relative">
+<img class="w-full h-full object-cover" data-alt="Steaming bowl of Indonesian Chinese noodle Bakmi Ayam Jamur with pangsit goreng, bakso sapi in Pasar Baru Jakarta noodle shop, vintage green floor tiles, classic diner counter." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJPUo8LrG4tEbgwLDCz11UImxmd-YQby-mkfjtNth-WYz0KjPOveGOeJCLzMrKgO6_36bBm6OH_-Khb2QVRPCMtrQV8Zyaki-l6Kg8WXHFj_itz2WBY4ypSlNMbI84rOUAH_v2IVx_6DULP_VyXREm2KbqGRDclaks6vZ6EnmffvdYchbmiWx3asodlYczvdwO2xnjlT2A9EcN8HemrgZ-1GzHmmYeyjbcJvAjvQJiovQf7SFAlIAFkQ"/>
+<span class="absolute bottom-0 right-0 bg-black/70 text-white font-data-mono text-[8px] px-1">4.7</span>
+</div>
+<div class="flex flex-col">
+<span class="font-data-mono text-label-sm font-semibold text-primary">PLC-8907</span>
+<span class="font-data-mono text-[10px] text-secondary">GEO: -6.164, 106.833</span>
+</div>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface hover:text-primary cursor-pointer transition-colors">Bakmi Gang Kelinci Pasar Baru</span>
+<span class="px-1.5 py-0.2 rounded bg-amber-100 text-amber-900 font-label-sm text-[9px] uppercase tracking-wider font-semibold">Legendary 1957</span>
+</div>
+<div class="flex flex-wrap items-center gap-1 text-[11px] text-secondary">
+<span class="px-1.5 py-0.2 bg-surface-container rounded font-label-sm text-on-surface-variant">Bakmi Ayam Halal</span>
+<span class="px-1.5 py-0.2 bg-surface-container rounded font-label-sm text-on-surface-variant">Pangsit Rebus</span>
+</div>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col">
+<span class="font-body-sm text-on-surface truncate max-w-[240px]">Jl. Kelinci Raya No. 1-3, Pasar Baru</span>
+<span class="font-data-mono text-[11px] text-secondary">Sawah Besar · Jakarta Pusat 10710</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col">
+<div class="flex items-center gap-1 font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[15px] text-amber-500 fill-current">star</span>
+<span>4.7</span>
+<span class="text-secondary font-normal font-data-mono text-[11px]">(4,300 ulasan)</span>
+</div>
+<span class="font-data-mono text-[10px] text-emerald-700">MUI Halal Certified</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-800 w-max">
+<span class="h-1.5 w-1.5 rounded-full bg-emerald-600"></span>
+<span>Buka · 09:00 - 21:00 WIB</span>
+</span>
+<span class="font-data-mono text-[10px] text-secondary">Continuous Service</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-amber-50 text-amber-900 w-max">
+<span class="material-symbols-outlined text-[13px] text-amber-600">rule_folder</span>
+<span>Claim Pending Verification</span>
+</span>
+<span class="font-data-mono text-[10px] text-amber-800">Dokumen Kemenkumham attached</span>
+</div>
+</td>
+<td class="px-3 py-2.5 text-right font-data-mono text-[11px] text-secondary">
+                11 Sep 2026<br/><span class="text-[10px] text-on-surface-variant">15:18 WIB</span>
+</td>
+<td class="px-4 py-2.5">
+<div class="flex items-center justify-center gap-1">
+<button class="h-7 px-2 rounded bg-amber-100 hover:bg-amber-200 text-amber-900 font-label-md text-label-md transition-colors font-semibold" type="button">
+                    Review
+                  </button>
+<button class="h-7 w-7 rounded bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[15px]">open_in_new</span>
+</button>
+<button class="h-7 w-7 rounded hover:bg-surface-container text-secondary hover:text-on-surface flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[17px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 8: Lawless Burgerbar Blok M -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="px-3 py-2.5 text-center">
+<input class="w-3.5 h-3.5 accent-primary rounded cursor-pointer" type="checkbox"/>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex items-center gap-2.5">
+<div class="w-11 h-11 rounded-sm overflow-hidden bg-surface-container shrink-0 shadow-sm relative">
+<img class="w-full h-full object-cover" data-alt="Heavy metal themed gourmet burger joint in Blok M Jakarta, juicy towering smashburger, black charcoal walls with rock band posters, dark moody neon ambience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCg6eCobNOUQDNgff5jSUFMR9A_1ZC3uDrGDlBOGx9xYjzP_5aL1DLfP3vNbh98G_USDOQjuCAc79HDBryOMQgKjtjLzK7ieopJ7BvyLYqtLxVdF_kCkXr5A-GPwnyQPf4gkwYAlV4HKUIFkOO8aMPPuWB1oFTYq0x55GBtDoVz_zDHsTCwFw7n-evVUhrT3lFT6PZLJmNtG8V_bTjCKUmsoYYKB1-wuGE-6_XALkX5o7UJQ0hKH7o7EQ"/>
+<span class="absolute bottom-0 right-0 bg-black/70 text-white font-data-mono text-[8px] px-1">4.8</span>
+</div>
+<div class="flex flex-col">
+<span class="font-data-mono text-label-sm font-semibold text-primary">PLC-8908</span>
+<span class="font-data-mono text-[10px] text-secondary">GEO: -6.244, 106.802</span>
+</div>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface hover:text-primary cursor-pointer transition-colors">Lawless Burgerbar Blok M</span>
+<span class="material-symbols-outlined text-[14px] text-emerald-600">verified</span>
+</div>
+<div class="flex flex-wrap items-center gap-1 text-[11px] text-secondary">
+<span class="px-1.5 py-0.2 bg-surface-container rounded font-label-sm text-on-surface-variant">Gourmet Burger</span>
+<span class="px-1.5 py-0.2 bg-surface-container rounded font-label-sm text-on-surface-variant">Craft Beer</span>
+<span class="px-1.5 py-0.2 bg-surface-container rounded font-label-sm text-on-surface-variant">Rock Subculture</span>
+</div>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col">
+<span class="font-body-sm text-on-surface truncate max-w-[240px]">Jl. Melawai 5 No. 67, Blok M</span>
+<span class="font-data-mono text-[11px] text-secondary">Kebayoran Baru · Jakarta Selatan 12160</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col">
+<div class="flex items-center gap-1 font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[15px] text-amber-500 fill-current">star</span>
+<span>4.8</span>
+<span class="text-secondary font-normal font-data-mono text-[11px]">(3,100 ulasan)</span>
+</div>
+<span class="font-data-mono text-[10px] text-emerald-700">Cult Following</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-800 w-max">
+<span class="h-1.5 w-1.5 rounded-full bg-emerald-600"></span>
+<span>Buka · 11:00 - 23:00 WIB</span>
+</span>
+<span class="font-data-mono text-[10px] text-secondary">Weekend Extended to 24:00</span>
+</div>
+</td>
+<td class="px-3 py-2.5">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-900 w-max">
+<span class="material-symbols-outlined text-[13px] text-emerald-600">verified_user</span>
+<span>PT Lawless Jakarta Boga</span>
+</span>
+<span class="font-data-mono text-[10px] text-secondary truncate">Verified Brand Owner</span>
+</div>
+</td>
+<td class="px-3 py-2.5 text-right font-data-mono text-[11px] text-secondary">
+                09 Sep 2026<br/><span class="text-[10px] text-on-surface-variant">19:30 WIB</span>
+</td>
+<td class="px-4 py-2.5">
+<div class="flex items-center justify-center gap-1">
+<button class="h-7 px-2 rounded bg-surface-container-low hover:bg-surface-container font-label-md text-label-md text-on-surface transition-colors" type="button">
+                    Edit
+                  </button>
+<button class="h-7 w-7 rounded bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[15px]">open_in_new</span>
+</button>
+<button class="h-7 w-7 rounded hover:bg-surface-container text-secondary hover:text-on-surface flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[17px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination & Table Footer -->
+<div class="px-4 py-3 bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-3 text-secondary font-body-sm select-none">
+<div class="flex items-center gap-4">
+<span class="font-data-mono text-[12px] text-on-surface">
+            Showing <strong class="text-on-surface">1–8</strong> of <strong class="text-on-surface">8,640</strong> places
+          </span>
+<div class="flex items-center gap-1.5 font-label-md">
+<span>Per page:</span>
+<div class="relative">
+<select class="h-6 pl-2 pr-6 rounded bg-surface-container text-on-surface font-data-mono text-label-sm appearance-none focus:outline-none cursor-pointer">
+<option selected="">25</option>
+<option>50</option>
+<option>100</option>
+<option>250</option>
+</select>
+<span class="material-symbols-outlined absolute right-1 top-1 text-[13px] text-secondary pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Numeric Page Controls -->
+<div class="flex items-center gap-1">
+<button class="h-7 px-2.5 rounded bg-surface-container-lowest text-secondary opacity-50 cursor-not-allowed font-label-md flex items-center gap-1" disabled="" type="button">
+<span class="material-symbols-outlined text-[14px]">chevron_left</span>
+<span>Prev</span>
+</button>
+<button class="h-7 w-7 rounded bg-primary-container text-on-primary font-data-mono text-label-sm font-semibold flex items-center justify-center shadow-sm" type="button">
+            1
+          </button>
+<button class="h-7 w-7 rounded bg-surface-container-lowest hover:bg-surface-container text-on-surface font-data-mono text-label-sm flex items-center justify-center transition-colors" type="button">
+            2
+          </button>
+<button class="h-7 w-7 rounded bg-surface-container-lowest hover:bg-surface-container text-on-surface font-data-mono text-label-sm flex items-center justify-center transition-colors" type="button">
+            3
+          </button>
+<span class="px-1 text-secondary font-data-mono">...</span>
+<button class="h-7 w-9 rounded bg-surface-container-lowest hover:bg-surface-container text-on-surface font-data-mono text-label-sm flex items-center justify-center transition-colors" type="button">
+            1080
+          </button>
+<button class="h-7 px-2.5 rounded bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-md flex items-center gap-1 transition-colors shadow-sm" type="button">
+<span>Next</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Location Inspector Drawer (Collapsible Utility Preview) -->
+<div class="bg-surface-container-lowest p-4 rounded-lg shadow-sm flex flex-col lg:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="h-9 w-9 rounded bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[20px]">map</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Active Geofencing Node: Jakarta Selatan Urban Corridor</h4>
+<p class="font-body-sm text-body-sm text-secondary">
+            Telemetry sync active: 2,410 coordinate points validated via Google Maps Geocoding API &amp; Dukcapil verified street registries.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="h-8 px-3 rounded bg-surface-container-low hover:bg-surface-container text-on-surface font-body-sm font-semibold flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">sync</span>
+<span>Refresh Geocodes</span>
+</button>
+<button class="h-8 px-3 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm font-semibold flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">layers</span>
+<span>Switch Map View</span>
+</button>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary-fixed":"#ffdad3","outline-variant":"#e0bfb9","on-primary-fixed-variant":"#891e07","inverse-on-surface":"#f1f1ef","on-surface-variant":"#58413c","surface-variant":"#e3e2e0","primary-container":"#c84b31","surface-container-highest":"#e3e2e0","tertiary-container":"#74747d","on-error-container":"#93000a","on-secondary-fixed-variant":"#47464a","background":"#faf9f7","primary":"#a6331b","surface-bright":"#faf9f7","surface-container-high":"#e9e8e6","primary-fixed-dim":"#ffb4a4","surface-container":"#efeeec","inverse-surface":"#2f3130","on-tertiary-fixed-variant":"#46464e","on-background":"#1a1c1b","surface-tint":"#aa361e","on-secondary-container":"#656467","on-tertiary-container":"#fffcff","on-primary":"#ffffff","secondary":"#5f5e61","on-tertiary-fixed":"#1a1b22","outline":"#8c716b","on-tertiary":"#ffffff","tertiary":"#5b5b64","on-primary-fixed":"#3e0500","secondary-fixed":"#e4e1e5","tertiary-fixed":"#e3e1ec","on-error":"#ffffff","inverse-primary":"#ffb4a4","on-primary-container":"#fffbff","on-secondary":"#ffffff","on-secondary-fixed":"#1b1b1e","secondary-fixed-dim":"#c8c6c9","error-container":"#ffdad6","on-surface":"#1a1c1b","secondary-container":"#e4e1e5","surface":"#faf9f7","tertiary-fixed-dim":"#c6c5cf","error":"#ba1a1a","surface-dim":"#dadad8","surface-container-lowest":"#ffffff","surface-container-low":"#f4f3f1"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-sm":"0.5rem","space-md":"0.75rem","gutter":"0.75rem","space-xs":"0.25rem","space-lg":"1rem","margin-desktop":"1.5rem","gutter-desktop":"1rem","margin":"1rem","space-xl":"1.5rem"},fontFamily:{"headline-lg":["Plus Jakarta Sans"],"body-md":["Inter"],"data-mono":["Inter"],"display-sm":["Plus Jakarta Sans"],"label-sm":["Inter"],"label-lg":["Inter"],"label-md":["Inter"],"body-lg":["Inter"],"body-sm":["Inter"],"headline-md":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"]},fontSize:{"headline-lg":["20px",{lineHeight:"28px",letterSpacing:"-0.015em",fontWeight:"700"}],"body-md":["13px",{lineHeight:"18px",fontWeight:"400"}],"data-mono":["12px",{lineHeight:"16px",letterSpacing:"-0.01em",fontWeight:"500"}],"display-sm":["24px",{lineHeight:"32px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-sm":["10px",{lineHeight:"12px",letterSpacing:"0.05em",fontWeight:"600"}],"label-lg":["13px",{lineHeight:"16px",fontWeight:"500"}],"label-md":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"600"}],"body-lg":["14px",{lineHeight:"22px",fontWeight:"400"}],"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"headline-md":["16px",{lineHeight:"24px",letterSpacing:"-0.01em",fontWeight:"600"}],"headline-sm":["14px",{lineHeight:"20px",letterSpacing:"-0.005em",fontWeight:"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-low border-r border-surface-container-highest z-40 flex flex-col justify-between select-none"><div class="flex flex-col h-full overflow-hidden"><div class="h-11 px-3 flex items-center gap-2 border-b border-surface-container-highest bg-surface-container-low shrink-0"><img alt="RasaKota Ops Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UDX-t83ewhjCl-Tj_3zDNFC4sRwrpkMDsvq-gUYS7yCNW0nZecUlKZmRXxMpgAj6JW2Je-03wTCvCL_2-EuOOK42R2SIRqaLNHxUQoY-V_p7tkWqsa_75EcMUlcdZeKSwe3DBmFVSzUcGhMkkUoTjxzhfJehvDzt5PRGY0Aw5opIetBmTDq1JKWajrbP2sQb7IwyMc6CZpxZFlBdmZr2MmPp9lBoPAo3sJRi71OzyTkneGftW-f1j8VqHb"/><div class="flex items-center gap-1.5 min-w-0"><span class="font-headline-sm text-headline-sm font-semibold tracking-tight text-on-surface truncate">RasaKota</span><span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-data-mono text-label-sm border border-outline-variant/40 uppercase shrink-0">Ops</span></div></div><div class="flex-1 overflow-y-auto px-2 py-2.5 space-y-4"><section><div><span class="px-2 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Overview</span></div><nav class="mt-1 space-y-0.5" data-active-classes="bg-surface-container-highest text-on-surface font-semibold border-l-2 border-primary"><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="overview" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">dashboard</span><span class="truncate">Overview</span></div></a></nav></section><section><div><span class="px-2 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Discovery Operations</span></div><nav class="mt-1 space-y-0.5" data-active-classes="bg-surface-container-highest text-on-surface font-semibold border-l-2 border-primary"><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="places" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">location_on</span><span class="truncate">Places</span></div><span class="font-data-mono text-label-sm px-1.5 py-0.2 rounded bg-surface-container text-on-surface-variant border border-outline-variant/30">2.4k</span></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="businesses-and-claims" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">storefront</span><span class="truncate">Businesses &amp; Claims</span></div><span class="font-data-mono text-label-sm px-1.5 py-0.2 rounded bg-secondary-container text-on-secondary-fixed font-semibold">12</span></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="events-and-approvals" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">event_available</span><span class="truncate">Events &amp; Approvals</span></div><span class="font-data-mono text-label-sm px-1.5 py-0.2 rounded bg-secondary-container text-on-secondary-fixed font-semibold">8</span></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="communities" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">diversity_3</span><span class="truncate">Communities</span></div></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="culinary-journeys" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">restaurant_menu</span><span class="truncate">Culinary Journeys</span></div></a></nav></section><section><div><span class="px-2 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Moderation &amp; Quality</span></div><nav class="mt-1 space-y-0.5" data-active-classes="bg-surface-container-highest text-on-surface font-semibold border-l-2 border-primary"><a aria-current="page" class="group flex items-center justify-between px-2 py-1.5 rounded-sm transition-colors bg-surface-container-highest text-on-surface font-semibold border-l-2 border-primary" data-path="moderation-queue" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">rule</span><span class="truncate">Moderation Queue</span></div><span class="font-data-mono text-label-sm px-1.5 py-0.2 rounded bg-primary-container text-on-primary font-semibold">17</span></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="reviews-and-ratings" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">rate_review</span><span class="truncate">Reviews &amp; Ratings</span></div></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="photos-and-media" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">photo_library</span><span class="truncate">Photos &amp; Media</span></div></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="community-posts" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">dynamic_feed</span><span class="truncate">Community Posts</span></div></a></nav></section><section><div><span class="px-2 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Community &amp; Users</span></div><nav class="mt-1 space-y-0.5" data-active-classes="bg-surface-container-highest text-on-surface font-semibold border-l-2 border-primary"><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="users-directory" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">people</span><span class="truncate">Users Directory</span></div></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="event-organizers" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">badge</span><span class="truncate">Event Organizers</span></div></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="business-owners" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">domain</span><span class="truncate">Business Owners</span></div></a></nav></section><section><div><span class="px-2 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Intelligence &amp; System</span></div><nav class="mt-1 space-y-0.5" data-active-classes="bg-surface-container-highest text-on-surface font-semibold border-l-2 border-primary"><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="platform-analytics" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">monitoring</span><span class="truncate">Platform Analytics</span></div></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="audit-logs" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">receipt_long</span><span class="truncate">Audit Logs</span></div></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="system-settings" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">settings</span><span class="truncate">System Settings</span></div></a></nav></section></div><div class="p-2.5 border-t border-surface-container-highest bg-surface-container-low shrink-0 space-y-2"><div class="flex items-center justify-between px-1.5"><div class="flex items-center gap-1.5"><span class="h-1.5 w-1.5 rounded-full bg-emerald-600"></span><span class="font-data-mono text-label-sm text-on-surface-variant">API: Normal</span></div><span class="font-data-mono text-label-sm text-secondary">99.98%</span></div><a class="flex items-center justify-between px-2 py-1 rounded bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:text-on-surface transition-colors" data-path="command-menu" href="#"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px] text-secondary">terminal</span><span class="font-data-mono text-label-sm">Command Menu</span></div><kbd class="font-data-mono text-[9px] px-1 py-0.5 rounded bg-surface-container-lowest border border-outline-variant/40 text-secondary">⌘K</kbd></a></div></div></aside><div class="pl-60"><header class="fixed top-0 left-60 right-0 h-11 bg-surface-container-lowest border-b border-surface-container-highest z-30 px-4 flex items-center justify-between gap-4"><div class="flex items-center gap-2.5 shrink-0"><span class="font-data-mono text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant border border-outline-variant/40 uppercase tracking-tight">PRODUCTION ID-JKT-01</span></div><div class="flex-1 max-w-xl"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-2.5 text-[16px] text-secondary pointer-events-none">search</span><input class="w-full h-7 pl-8 pr-12 rounded bg-surface-container-low border border-outline-variant/50 font-body-sm text-body-sm text-on-surface placeholder:text-secondary focus:outline-none cursor-pointer hover:bg-surface-container transition-colors" placeholder="Search users, places, events, communities, or moderation IDs... (Press ⌘K)" readonly="" type="text"/><kbd class="absolute right-2 font-data-mono text-[10px] px-1 py-0.2 rounded bg-surface-container-lowest border border-outline-variant/50 text-secondary pointer-events-none">⌘K</kbd></div></div><div class="flex items-center gap-3 shrink-0"><div class="flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-low border border-outline-variant/30"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span></span><span class="font-data-mono text-label-sm text-on-surface uppercase font-semibold">Live Ops</span></div><button class="relative p-1 rounded hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">notifications</span><span class="absolute -top-0.5 -right-0.5 font-data-mono text-[9px] px-1 rounded-full bg-primary text-on-primary font-semibold leading-tight">14</span></button><div class="flex items-center gap-1 font-data-mono text-label-sm text-secondary border-l border-surface-container-highest pl-3"><span class="material-symbols-outlined text-[14px]">schedule</span><span>WIB (UTC+7) 14:32</span></div><div class="flex items-center gap-2 border-l border-surface-container-highest pl-3 cursor-pointer hover:opacity-90"><img alt="Profile" class="w-7 h-7 rounded-full object-cover border border-outline-variant/50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwPz6EdFOT5QGsMMp26it9yO9c7jniDlv96BDMjI47nc_3zHUGDGBrRv31XohmjNNgGIq2eo2ztnGRoU_joW-y9AXXaMV9IClDz4hW_kN4yv0pTBSCoi1edEDp9tRwipbhzTufDRHQKQ7wl7ctTnMxp53woTVRNh-Xc4rd94plwtubrUZCBPezOfEmbBsxx7lbEb8NbxFljPX9X1wIBrVNO7hFf58brOb1GT64Fe2qUAY--Oee8FF_1w"/><div class="flex flex-col text-left"><span class="font-body-sm text-body-sm font-semibold leading-tight text-on-surface">Dian Sastrowardoyo</span><div class="flex items-center gap-1"><span class="font-label-sm text-[9px] px-1 py-0.2 rounded bg-surface-container text-on-surface-variant font-medium uppercase">Platform Admin</span></div></div><span class="material-symbols-outlined text-[16px] text-secondary">expand_more</span></div></div></header><main class="relative pt-11 w-full bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Operational Sub-Header / Cockpit Command -->
+<div class="bg-surface-container-low px-6 py-4 shadow-sm">
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-error-container text-on-error-container font-label-sm text-label-sm uppercase tracking-wider font-semibold">Triage Live</span>
+<span class="font-data-mono text-data-mono text-secondary">CLUSTER: ID-JKT-SOUTH-OPS</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mt-1">Moderation Queue &amp; Safety Center</h1>
+<p class="font-body-md text-body-md text-secondary mt-0.5">Review flagged reviews, inappropriate venue photos, spam comments, and reported user conduct.</p>
+</div>
+<!-- SLA & Velocity Telemetry Card -->
+<div class="flex items-stretch gap-3 bg-surface-container-lowest p-2.5 rounded-lg shadow-sm">
+<div class="flex flex-col justify-between px-3 border-r border-surface-container-highest">
+<span class="font-label-sm text-label-sm uppercase text-secondary">Queue Volume</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-md text-headline-md text-primary font-bold">17</span>
+<span class="font-data-mono text-label-sm text-error font-semibold">Urgent</span>
+<span class="text-secondary text-label-sm font-data-mono">/ 25 Std</span>
+</div>
+</div>
+<div class="flex flex-col justify-between px-3 border-r border-surface-container-highest">
+<span class="font-label-sm text-label-sm uppercase text-secondary">Avg Resolution</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-md text-headline-md text-on-surface font-bold">14.2<span class="text-body-sm font-normal text-secondary">m</span></span>
+<span class="px-1 py-0.2 rounded bg-surface-container text-on-surface-variant font-data-mono text-[10px]">SLA &lt;30m</span>
+</div>
+</div>
+<div class="flex flex-col justify-center px-2">
+<span class="font-label-sm text-label-sm uppercase text-secondary mb-1">Queue Velocity</span>
+<div class="w-24 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 72%;"></div>
+</div>
+<span class="font-data-mono text-[10px] text-secondary mt-1">72% SLA clearance</span>
+</div>
+</div>
+</div>
+<!-- Filter & Scope Navigation Strip -->
+<div class="mt-4 pt-3 flex flex-wrap items-center justify-between gap-3 border-t border-surface-container-highest">
+<!-- Tabs -->
+<div class="flex items-center gap-1 overflow-x-auto pb-1 max-w-full">
+<button class="px-3 py-1.5 rounded text-body-sm font-body-sm text-secondary hover:text-on-surface hover:bg-surface-container transition-colors whitespace-nowrap">All Reports <span class="ml-1 font-data-mono text-label-sm text-secondary">42</span></button>
+<button class="px-3 py-1.5 rounded bg-primary-container text-on-primary font-body-sm text-body-sm font-medium whitespace-nowrap shadow-sm">High Priority <span class="ml-1 font-data-mono text-label-sm bg-primary px-1.5 py-0.2 rounded text-on-primary font-bold">17</span></button>
+<button class="px-3 py-1.5 rounded text-body-sm font-body-sm text-secondary hover:text-on-surface hover:bg-surface-container transition-colors whitespace-nowrap">Reviews <span class="ml-1 font-data-mono text-label-sm text-secondary">14</span></button>
+<button class="px-3 py-1.5 rounded text-body-sm font-body-sm text-secondary hover:text-on-surface hover:bg-surface-container transition-colors whitespace-nowrap">Photos &amp; Media <span class="ml-1 font-data-mono text-label-sm text-secondary">18</span></button>
+<button class="px-3 py-1.5 rounded text-body-sm font-body-sm text-secondary hover:text-on-surface hover:bg-surface-container transition-colors whitespace-nowrap">Places &amp; Edits <span class="ml-1 font-data-mono text-label-sm text-secondary">6</span></button>
+<button class="px-3 py-1.5 rounded text-body-sm font-body-sm text-secondary hover:text-on-surface hover:bg-surface-container transition-colors whitespace-nowrap">Users &amp; Spammers <span class="ml-1 font-data-mono text-label-sm text-secondary">4</span></button>
+</div>
+<!-- Quick Triage Dropdowns -->
+<div class="flex items-center gap-2">
+<div class="flex items-center bg-surface-container-lowest px-2.5 py-1 rounded text-body-sm text-on-surface shadow-sm">
+<span class="material-symbols-outlined text-[15px] text-secondary mr-1.5">filter_list</span>
+<span class="font-label-sm text-label-sm text-secondary mr-2 uppercase">Reason:</span>
+<select class="bg-transparent text-body-sm font-body-sm text-on-surface focus:outline-none cursor-pointer">
+<option>All Incident Types</option>
+<option selected="">Spam / Competitor Sabotage</option>
+<option>Harassment &amp; Abuse</option>
+<option>Copyright Infringement</option>
+<option>Fake Location &amp; Metadata</option>
+</select>
+</div>
+<div class="flex items-center bg-surface-container-lowest px-2.5 py-1 rounded text-body-sm text-on-surface shadow-sm">
+<span class="material-symbols-outlined text-[15px] text-secondary mr-1.5">person</span>
+<select class="bg-transparent text-body-sm font-body-sm text-on-surface focus:outline-none cursor-pointer">
+<option>Assigned: Dian Sastrowardoyo (You)</option>
+<option>Assigned: All Moderators</option>
+<option>Unassigned (Open Pool)</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Split Canvas: Left Queue / Right Inspection -->
+<div class="p-6 grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
+<!-- LEFT PANE: Moderation Queue (5 cols on 12-col grid) -->
+<div class="xl:col-span-5 flex flex-col space-y-3">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface">Queue Stream</span>
+<span class="font-data-mono text-label-sm px-1.5 py-0.5 rounded bg-surface-container-high text-secondary">5 visible</span>
+</div>
+<div class="flex items-center gap-1 text-label-sm font-data-mono text-secondary">
+<span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+<span>Auto-syncing (3s)</span>
+</div>
+</div>
+<!-- Queue Cards Container -->
+<div class="space-y-2.5">
+<!-- CARD 1: Selected Active Card -->
+<div class="bg-surface-container-lowest rounded-lg p-3.5 shadow-md relative cursor-pointer ring-2 ring-primary-container transition-all">
+<div class="absolute top-0 left-0 bottom-0 w-1.5 bg-primary-container rounded-l-lg"></div>
+<div class="pl-2">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="font-data-mono text-label-md font-semibold text-primary">#REP-9412</span>
+<span class="px-1.5 py-0.2 rounded bg-error-container text-on-error-container font-label-sm text-[10px] uppercase font-bold tracking-wide">High Priority</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container text-secondary font-label-sm text-[10px] uppercase">Review</span>
+</div>
+<div class="flex items-center gap-1 font-data-mono text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[13px]">timer</span>
+<span>12m ago</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface line-clamp-1">Gultik Blok M Pak Agus</h2>
+<p class="font-body-sm text-body-sm text-error font-medium mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">campaign</span>
+              Suspected Competitor Spam / Harassment
+            </p>
+<div class="mt-2.5 pt-2 bg-surface-container-low rounded p-2 flex items-center justify-between">
+<div class="flex items-center gap-1.5 min-w-0">
+<span class="material-symbols-outlined text-[14px] text-secondary">verified_user</span>
+<span class="font-label-sm text-label-sm text-on-surface truncate">@dimas_foodguide</span>
+<span class="font-data-mono text-[9px] px-1 bg-surface-container text-secondary rounded">Lvl 4</span>
+</div>
+<span class="font-data-mono text-[10px] text-primary font-bold">Active Inspection →</span>
+</div>
+</div>
+</div>
+<!-- CARD 2: Image AI High Priority -->
+<div class="bg-surface-container-lowest rounded-lg p-3.5 shadow-sm hover:shadow-md cursor-pointer transition-all">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="font-data-mono text-label-md font-semibold text-secondary">#REP-9411</span>
+<span class="px-1.5 py-0.2 rounded bg-error-container text-on-error-container font-label-sm text-[10px] uppercase font-bold tracking-wide">High Priority</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container text-secondary font-label-sm text-[10px] uppercase">Photo Media</span>
+</div>
+<div class="flex items-center gap-1 font-data-mono text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[13px]">schedule</span>
+<span>24m ago</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface line-clamp-1">Sate Taichan Bang Ocit Senayan</h2>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">hide_image</span>
+            Promotional Flyer / Inappropriate Venue Media
+          </p>
+<div class="mt-2.5 pt-2 flex items-center justify-between border-t border-surface-container">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-primary">smart_toy</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Automated Vision AI</span>
+<span class="font-data-mono text-[10px] px-1 bg-error-container text-on-error-container rounded">94% Conf.</span>
+</div>
+<span class="font-data-mono text-label-sm text-secondary">Pending</span>
+</div>
+</div>
+<!-- CARD 3: Community Post Scalping -->
+<div class="bg-surface-container-lowest rounded-lg p-3.5 shadow-sm hover:shadow-md cursor-pointer transition-all">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="font-data-mono text-label-md font-semibold text-secondary">#REP-9410</span>
+<span class="px-1.5 py-0.2 rounded bg-secondary-container text-on-secondary-fixed font-label-sm text-[10px] uppercase font-semibold">Med Priority</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container text-secondary font-label-sm text-[10px] uppercase">Community</span>
+</div>
+<div class="flex items-center gap-1 font-data-mono text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[13px]">schedule</span>
+<span>38m ago</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface line-clamp-1">Kopi Jakarta Selatan Club</h2>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-secondary">confirmation_number</span>
+            Illegal Ticket Reselling / Workshop Scalping
+          </p>
+<div class="mt-2.5 pt-2 flex items-center justify-between border-t border-surface-container">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-secondary">person</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">@anita_coffee</span>
+</div>
+<span class="font-data-mono text-label-sm text-secondary">Pending</span>
+</div>
+</div>
+<!-- CARD 4: Fraudulent Edit -->
+<div class="bg-surface-container-lowest rounded-lg p-3.5 shadow-sm hover:shadow-md cursor-pointer transition-all">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="font-data-mono text-label-md font-semibold text-secondary">#REP-9409</span>
+<span class="px-1.5 py-0.2 rounded bg-secondary-container text-on-secondary-fixed font-label-sm text-[10px] uppercase font-semibold">Med Priority</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container text-secondary font-label-sm text-[10px] uppercase">Place Edit</span>
+</div>
+<div class="flex items-center gap-1 font-data-mono text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[13px]">schedule</span>
+<span>45m ago</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface line-clamp-1">Warung MJS Setiabudi</h2>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-secondary">call_end</span>
+            Fraudulent Reservation Phone Number
+          </p>
+<div class="mt-2.5 pt-2 flex items-center justify-between border-t border-surface-container">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-secondary">storefront</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Claimed Business Owner</span>
+</div>
+<span class="font-data-mono text-label-sm text-secondary">Pending</span>
+</div>
+</div>
+<!-- CARD 5: System Heuristic -->
+<div class="bg-surface-container-lowest rounded-lg p-3.5 shadow-sm hover:shadow-md cursor-pointer transition-all opacity-85">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="font-data-mono text-label-md font-semibold text-secondary">#REP-9408</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container text-secondary font-label-sm text-[10px] uppercase font-semibold">Low Priority</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container text-secondary font-label-sm text-[10px] uppercase">Review</span>
+</div>
+<div class="flex items-center gap-1 font-data-mono text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[13px]">schedule</span>
+<span>1h ago</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface line-clamp-1">Kopi Kenangan Grand Indonesia</h2>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-secondary">content_copy</span>
+            Duplicate content / Bot copy-paste text
+          </p>
+<div class="mt-2.5 pt-2 flex items-center justify-between border-t border-surface-container">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-secondary">tune</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">System Heuristic Analyzer</span>
+</div>
+<span class="font-data-mono text-label-sm text-secondary">Pending</span>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT PANE: Active Report Inspection & Action Dossier (7 cols on 12-col grid) -->
+<div class="xl:col-span-7 flex flex-col space-y-4">
+<!-- Dossier Header & Risk Badge -->
+<div class="bg-surface-container-lowest rounded-lg p-5 shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-3 border-b border-surface-container-highest">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-data-mono text-headline-sm font-bold text-primary">#REP-9412</span>
+<span class="font-body-md text-secondary">/</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Review Integrity Moderation</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary mt-0.5 block">Reported in Food &amp; Dining · South Jakarta District</span>
+</div>
+<!-- Risk Score Gauges -->
+<div class="flex items-center gap-2 bg-error-container/40 px-3 py-2 rounded-lg border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary text-[24px]">fitbit_push_ups</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-[10px] uppercase tracking-wider text-primary font-bold">Threat Risk Score</span>
+<span class="font-headline-md text-headline-md text-primary font-extrabold leading-none">88<span class="text-body-sm font-medium text-secondary">/100</span></span>
+</div>
+</div>
+</div>
+<!-- Telemetry Metadata Strip -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-3 pt-1">
+<div class="bg-surface-container-low p-2 rounded">
+<span class="font-label-sm text-label-sm uppercase text-secondary block">Received</span>
+<span class="font-data-mono text-body-sm text-on-surface font-medium">12m 45s ago</span>
+</div>
+<div class="bg-surface-container-low p-2 rounded">
+<span class="font-label-sm text-label-sm uppercase text-secondary block">Assigned Lead</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Dian S. (Active)</span>
+</div>
+<div class="bg-surface-container-low p-2 rounded">
+<span class="font-label-sm text-label-sm uppercase text-secondary block">Content Target</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Public Review</span>
+</div>
+<div class="bg-surface-container-low p-2 rounded">
+<span class="font-label-sm text-label-sm uppercase text-secondary block">Evidence Level</span>
+<span class="font-data-mono text-body-sm text-primary font-semibold">High Confidence</span>
+</div>
+</div>
+</div>
+<!-- Flagged Content Inspection Block -->
+<div class="bg-surface-container-lowest rounded-lg p-5 shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-primary"></span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Target Venue &amp; Subject Content</h2>
+</div>
+<a class="font-label-sm text-label-sm text-primary hover:underline flex items-center gap-0.5" href="#">
+            View Live Venue Page <span class="material-symbols-outlined text-[13px]">open_in_new</span>
+</a>
+</div>
+<!-- Venue Summary Strip -->
+<div class="flex items-start gap-3 bg-surface-container-low p-3 rounded mb-4">
+<div class="w-16 h-16 rounded overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Street food cart stalls in Blok M Jakarta night culinary scene with ambient warm string lights and authentic Indonesian street food preparation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDldC7przpatr4biVeGrpcWvNwKduQFviSEeiRQlEDUAAnYD_kREaTsxgnAD1T5J3D-mG-2pqwSk2vfw3LjA4arGp7eyFWyEGi03MNy2Odnuk02OoWq0BSq9Em4RsmnznT6HT4F4yFDIlVUQ8py_LCBVtsRGHP91pVOrTx5qLSLal9Pyv65Q0Mv1dfxJLP3t-y-5CVgBZ6DnOvCUob0gFNvXC_I88eIUkwMEZ-zZ_u3RcDptSaTxH6_Vg"/>
+</div>
+<div class="min-w-0 flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">Gultik Blok M Pak Agus</h3>
+<p class="font-body-sm text-body-sm text-secondary">Jl. Mahakam No. 28, Kebayoran Baru, Jakarta Selatan</p>
+<div class="flex items-center gap-3 mt-1 font-data-mono text-label-sm text-secondary">
+<span class="flex items-center text-amber-700 font-semibold">★ 4.8</span>
+<span>1,842 authentic reviews</span>
+<span class="text-emerald-700 font-semibold">Verified Merchant</span>
+</div>
+</div>
+</div>
+<!-- The Flagged Review Object -->
+<div class="bg-surface-container-lowest rounded-lg p-4 shadow-sm border-l-4 border-error">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center font-bold text-secondary text-body-sm">
+                B
+              </div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">@bot_kuliner_jakarta</span>
+<span class="px-1 rounded bg-error-container text-on-error-container font-data-mono text-[9px] uppercase">Suspicious</span>
+</div>
+<span class="font-data-mono text-[10px] text-secondary">Account age: 2 days · 1 contribution total</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary font-headline-sm">
+              ★☆☆☆☆ <span class="font-data-mono text-label-sm text-secondary font-normal ml-1">(1.0)</span>
+</div>
+</div>
+<!-- Highlighted Content with Flagged Spans -->
+<div class="p-3 bg-error-container/20 rounded font-body-md text-body-md text-on-surface leading-relaxed mt-2">
+            “JANGAN MAKAN DISINI!! Dagingnya basi dan kotor banget, pelayanannya kasar. Mending makan di tempat seberang yang jauh lebih higienis dan murah meriah, cek ig <span class="bg-error-container text-on-error-container font-bold px-1 rounded underline">@warungsate_xyz</span> promo hari ini!”
+          </div>
+<!-- Forensic Evidence Signals -->
+<div class="mt-3 grid grid-cols-1 md:grid-cols-3 gap-2">
+<div class="bg-surface-container p-2 rounded flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary mt-0.5">alternate_email</span>
+<div class="text-[11px] leading-tight text-on-surface-variant font-body-sm">
+<strong>Third-party handle promotion</strong> detected in negative context
+              </div>
+</div>
+<div class="bg-surface-container p-2 rounded flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary mt-0.5">wifi_proxy</span>
+<div class="text-[11px] leading-tight text-on-surface-variant font-body-sm">
+<strong>Proxy IP Subang cluster</strong> matches 4 blacklisted accounts
+              </div>
+</div>
+<div class="bg-surface-container p-2 rounded flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary mt-0.5">trending_down</span>
+<div class="text-[11px] leading-tight text-on-surface-variant font-body-sm">
+<strong>Extreme anomaly deviation:</strong> 1.0 vs 4.8 baseline rating
+              </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Reporter Credibility Context Box -->
+<div class="bg-surface-container-lowest rounded-lg p-4 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Reporter Integrity Dossier</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-emerald-800 font-data-mono text-label-sm font-semibold">Credibility: 99.4%</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-surface-container-low p-3 rounded">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-on-surface">
+              DW
+            </div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Dimas Wicaksono</span>
+<span class="font-data-mono text-label-sm text-secondary">(@dimas_foodguide)</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">Indonesian Food Curator Badge · 142 Approved Reports · 0 False Reports</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm uppercase text-secondary block">Report Category</span>
+<span class="font-body-sm text-body-sm font-medium text-error">Competitor Commercial Sabotage</span>
+</div>
+</div>
+<div class="mt-2.5 p-2 bg-surface-container rounded text-body-sm font-body-sm text-on-surface-variant">
+<span class="font-semibold text-on-surface">Reporter Note:</span> “Akun baru spamming nama warung kompetitor di beberapa tempat gultik Blok M. Pola kalimat identik.”
+        </div>
+</div>
+<!-- Decision & Enforcement Panel -->
+<div class="bg-surface-container-lowest rounded-lg p-5 shadow-md">
+<div class="flex items-center justify-between mb-3 pb-2 border-b border-surface-container-highest">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">gavel</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Moderator Enforcement Decision</h2>
+</div>
+<div class="flex items-center gap-1 font-data-mono text-label-sm text-secondary">
+<span>Mandatory Audit Log Entry</span>
+</div>
+</div>
+<!-- Action Radios -->
+<div class="space-y-2">
+<label class="flex items-start gap-3 p-2.5 rounded bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<input checked="" class="mt-1 accent-primary" name="moderation_action" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Remove Content &amp; Suspend Perpetrator Account</span>
+<span class="px-1.5 py-0.2 rounded bg-primary-container text-on-primary font-data-mono text-[9px] uppercase font-bold">Recommended</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5">Purges fake review from venue score, revokes user token, adds Subang proxy to blacklisted subnets.</p>
+</div>
+</label>
+<label class="flex items-start gap-3 p-2.5 rounded bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<input class="mt-1 accent-primary" name="moderation_action" type="radio"/>
+<div class="flex-1">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Remove Review &amp; Issue First Warning to User</span>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5">Soft-deletes review with penalty warning sent via platform push notification.</p>
+</div>
+</label>
+<label class="flex items-start gap-3 p-2.5 rounded bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<input class="mt-1 accent-primary" name="moderation_action" type="radio"/>
+<div class="flex-1">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Dismiss Report (No Violation Found)</span>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5">Review remains active and visible. Closes ticket with negative penalty on reporter confidence.</p>
+</div>
+</label>
+<label class="flex items-start gap-3 p-2.5 rounded bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<input class="mt-1 accent-primary" name="moderation_action" type="radio"/>
+<div class="flex-1">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Escalate to Trust &amp; Safety Legal Lead</span>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5">Transfers ticket to legal team for coordinated business smear campaign investigation.</p>
+</div>
+</label>
+</div>
+<!-- Audit Note Entry -->
+<div class="mt-4">
+<label class="block font-label-sm text-label-sm uppercase text-secondary mb-1">Audit Log Reasoning (Required for audit trail)</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest px-3 py-2 rounded text-body-sm font-body-sm text-on-surface shadow-sm focus:outline-none focus:ring-1 focus:ring-primary" type="text" value="Confirmed competitor promo spam from disposable account. Banning IP cluster."/>
+</div>
+<span class="font-data-mono text-[10px] text-secondary mt-1 block">Signed by: Dian Sastrowardoyo (Platform Admin ID: ADM-0941)</span>
+</div>
+<!-- Action Buttons -->
+<div class="mt-5 pt-3 border-t border-surface-container-highest flex flex-col sm:flex-row items-center justify-between gap-3">
+<button class="px-3 py-2 rounded bg-surface-container hover:bg-surface-container-high text-secondary text-body-sm font-medium transition-colors w-full sm:w-auto" type="button">
+            Skip &amp; Next in Queue
+          </button>
+<div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+<button class="px-3 py-2 rounded bg-surface-container hover:bg-surface-container-high text-on-surface text-body-sm font-medium transition-colors" type="button">
+              Save Draft
+            </button>
+<button class="px-4 py-2 rounded bg-primary-container hover:bg-primary text-on-primary font-body-sm text-body-sm font-semibold shadow-sm transition-colors flex items-center justify-center gap-1.5 w-full sm:w-auto" id="submitActionBtn" type="button">
+<span>Apply Action: Remove &amp; Suspend User</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+    (function() {
+      const submitBtn = document.getElementById('submitActionBtn');
+      if (submitBtn) {
+        submitBtn.addEventListener('click', function() {
+          const originalText = submitBtn.innerHTML;
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">sync</span><span>Enforcing Decision...</span>';
+          
+          setTimeout(function() {
+            submitBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">check_circle</span><span>Action Logged &amp; Next Loaded</span>';
+            submitBtn.classList.remove('bg-primary-container');
+            submitBtn.classList.add('bg-emerald-700');
+            
+            setTimeout(function() {
+              submitBtn.disabled = false;
+              submitBtn.classList.remove('bg-emerald-700');
+              submitBtn.classList.add('bg-primary-container');
+              submitBtn.innerHTML = originalText;
+            }, 1800);
+          }, 900);
+        });
+      }
+    })();
+  </script>
+</div></main></div></body></html>

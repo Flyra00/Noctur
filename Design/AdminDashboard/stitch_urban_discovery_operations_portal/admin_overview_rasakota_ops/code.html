@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary-fixed":"#ffdad3","outline-variant":"#e0bfb9","on-primary-fixed-variant":"#891e07","inverse-on-surface":"#f1f1ef","on-surface-variant":"#58413c","surface-variant":"#e3e2e0","primary-container":"#c84b31","surface-container-highest":"#e3e2e0","tertiary-container":"#74747d","on-error-container":"#93000a","on-secondary-fixed-variant":"#47464a","background":"#faf9f7","primary":"#a6331b","surface-bright":"#faf9f7","surface-container-high":"#e9e8e6","primary-fixed-dim":"#ffb4a4","surface-container":"#efeeec","inverse-surface":"#2f3130","on-tertiary-fixed-variant":"#46464e","on-background":"#1a1c1b","surface-tint":"#aa361e","on-secondary-container":"#656467","on-tertiary-container":"#fffcff","on-primary":"#ffffff","secondary":"#5f5e61","on-tertiary-fixed":"#1a1b22","outline":"#8c716b","on-tertiary":"#ffffff","tertiary":"#5b5b64","on-primary-fixed":"#3e0500","secondary-fixed":"#e4e1e5","tertiary-fixed":"#e3e1ec","on-error":"#ffffff","inverse-primary":"#ffb4a4","on-primary-container":"#fffbff","on-secondary":"#ffffff","on-secondary-fixed":"#1b1b1e","secondary-fixed-dim":"#c8c6c9","error-container":"#ffdad6","on-surface":"#1a1c1b","secondary-container":"#e4e1e5","surface":"#faf9f7","tertiary-fixed-dim":"#c6c5cf","error":"#ba1a1a","surface-dim":"#dadad8","surface-container-lowest":"#ffffff","surface-container-low":"#f4f3f1"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-sm":"0.5rem","space-md":"0.75rem","gutter":"0.75rem","space-xs":"0.25rem","space-lg":"1rem","margin-desktop":"1.5rem","gutter-desktop":"1rem","margin":"1rem","space-xl":"1.5rem"},fontFamily:{"headline-lg":["Plus Jakarta Sans"],"body-md":["Inter"],"data-mono":["Inter"],"display-sm":["Plus Jakarta Sans"],"label-sm":["Inter"],"label-lg":["Inter"],"label-md":["Inter"],"body-lg":["Inter"],"body-sm":["Inter"],"headline-md":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"]},fontSize:{"headline-lg":["20px",{lineHeight:"28px",letterSpacing:"-0.015em",fontWeight:"700"}],"body-md":["13px",{lineHeight:"18px",fontWeight:"400"}],"data-mono":["12px",{lineHeight:"16px",letterSpacing:"-0.01em",fontWeight:"500"}],"display-sm":["24px",{lineHeight:"32px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-sm":["10px",{lineHeight:"12px",letterSpacing:"0.05em",fontWeight:"600"}],"label-lg":["13px",{lineHeight:"16px",fontWeight:"500"}],"label-md":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"600"}],"body-lg":["14px",{lineHeight:"22px",fontWeight:"400"}],"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"headline-md":["16px",{lineHeight:"24px",letterSpacing:"-0.01em",fontWeight:"600"}],"headline-sm":["14px",{lineHeight:"20px",letterSpacing:"-0.005em",fontWeight:"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-low border-r border-surface-container-highest z-40 flex flex-col justify-between select-none"><div class="flex flex-col h-full overflow-hidden"><div class="h-11 px-3 flex items-center gap-2 border-b border-surface-container-highest bg-surface-container-low shrink-0"><img alt="RasaKota Ops Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UDX-t83ewhjCl-Tj_3zDNFC4sRwrpkMDsvq-gUYS7yCNW0nZecUlKZmRXxMpgAj6JW2Je-03wTCvCL_2-EuOOK42R2SIRqaLNHxUQoY-V_p7tkWqsa_75EcMUlcdZeKSwe3DBmFVSzUcGhMkkUoTjxzhfJehvDzt5PRGY0Aw5opIetBmTDq1JKWajrbP2sQb7IwyMc6CZpxZFlBdmZr2MmPp9lBoPAo3sJRi71OzyTkneGftW-f1j8VqHb"/><div class="flex items-center gap-1.5 min-w-0"><span class="font-headline-sm text-headline-sm font-semibold tracking-tight text-on-surface truncate">RasaKota</span><span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-data-mono text-label-sm border border-outline-variant/40 uppercase shrink-0">Ops</span></div></div><div class="flex-1 overflow-y-auto px-2 py-2.5 space-y-4"><section><div><span class="px-2 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Overview</span></div><nav class="mt-1 space-y-0.5" data-active-classes="bg-surface-container-highest text-on-surface font-semibold border-l-2 border-primary"><a aria-current="page" class="group flex items-center justify-between px-2 py-1.5 rounded-sm transition-colors bg-surface-container-highest text-on-surface font-semibold border-l-2 border-primary" data-path="overview" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">dashboard</span><span class="truncate">Overview</span></div></a></nav></section><section><div><span class="px-2 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Discovery Operations</span></div><nav class="mt-1 space-y-0.5" data-active-classes="bg-surface-container-highest text-on-surface font-semibold border-l-2 border-primary"><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="places" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">location_on</span><span class="truncate">Places</span></div><span class="font-data-mono text-label-sm px-1.5 py-0.2 rounded bg-surface-container text-on-surface-variant border border-outline-variant/30">2.4k</span></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="businesses-and-claims" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">storefront</span><span class="truncate">Businesses &amp; Claims</span></div><span class="font-data-mono text-label-sm px-1.5 py-0.2 rounded bg-secondary-container text-on-secondary-fixed font-semibold">12</span></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="events-and-approvals" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">event_available</span><span class="truncate">Events &amp; Approvals</span></div><span class="font-data-mono text-label-sm px-1.5 py-0.2 rounded bg-secondary-container text-on-secondary-fixed font-semibold">8</span></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="communities" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">diversity_3</span><span class="truncate">Communities</span></div></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="culinary-journeys" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">restaurant_menu</span><span class="truncate">Culinary Journeys</span></div></a></nav></section><section><div><span class="px-2 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Moderation &amp; Quality</span></div><nav class="mt-1 space-y-0.5" data-active-classes="bg-surface-container-highest text-on-surface font-semibold border-l-2 border-primary"><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="moderation-queue" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">rule</span><span class="truncate">Moderation Queue</span></div><span class="font-data-mono text-label-sm px-1.5 py-0.2 rounded bg-primary-container text-on-primary font-semibold">17</span></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="reviews-and-ratings" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">rate_review</span><span class="truncate">Reviews &amp; Ratings</span></div></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="photos-and-media" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">photo_library</span><span class="truncate">Photos &amp; Media</span></div></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="community-posts" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">dynamic_feed</span><span class="truncate">Community Posts</span></div></a></nav></section><section><div><span class="px-2 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Community &amp; Users</span></div><nav class="mt-1 space-y-0.5" data-active-classes="bg-surface-container-highest text-on-surface font-semibold border-l-2 border-primary"><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="users-directory" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">people</span><span class="truncate">Users Directory</span></div></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="event-organizers" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">badge</span><span class="truncate">Event Organizers</span></div></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="business-owners" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">domain</span><span class="truncate">Business Owners</span></div></a></nav></section><section><div><span class="px-2 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Intelligence &amp; System</span></div><nav class="mt-1 space-y-0.5" data-active-classes="bg-surface-container-highest text-on-surface font-semibold border-l-2 border-primary"><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="platform-analytics" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">monitoring</span><span class="truncate">Platform Analytics</span></div></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="audit-logs" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">receipt_long</span><span class="truncate">Audit Logs</span></div></a><a class="group flex items-center justify-between px-2 py-1.5 rounded-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="system-settings" href="#"><div class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-[17px] text-secondary group-hover:text-on-surface">settings</span><span class="truncate">System Settings</span></div></a></nav></section></div><div class="p-2.5 border-t border-surface-container-highest bg-surface-container-low shrink-0 space-y-2"><div class="flex items-center justify-between px-1.5"><div class="flex items-center gap-1.5"><span class="h-1.5 w-1.5 rounded-full bg-emerald-600"></span><span class="font-data-mono text-label-sm text-on-surface-variant">API: Normal</span></div><span class="font-data-mono text-label-sm text-secondary">99.98%</span></div><a class="flex items-center justify-between px-2 py-1 rounded bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:text-on-surface transition-colors" data-path="command-menu" href="#"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px] text-secondary">terminal</span><span class="font-data-mono text-label-sm">Command Menu</span></div><kbd class="font-data-mono text-[9px] px-1 py-0.5 rounded bg-surface-container-lowest border border-outline-variant/40 text-secondary">⌘K</kbd></a></div></div></aside><div class="pl-60"><header class="fixed top-0 left-60 right-0 h-11 bg-surface-container-lowest border-b border-surface-container-highest z-30 px-4 flex items-center justify-between gap-4"><div class="flex items-center gap-2.5 shrink-0"><span class="font-data-mono text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant border border-outline-variant/40 uppercase tracking-tight">PRODUCTION ID-JKT-01</span></div><div class="flex-1 max-w-xl"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-2.5 text-[16px] text-secondary pointer-events-none">search</span><input class="w-full h-7 pl-8 pr-12 rounded bg-surface-container-low border border-outline-variant/50 font-body-sm text-body-sm text-on-surface placeholder:text-secondary focus:outline-none cursor-pointer hover:bg-surface-container transition-colors" placeholder="Search users, places, events, communities, or moderation IDs... (Press ⌘K)" readonly="" type="text"/><kbd class="absolute right-2 font-data-mono text-[10px] px-1 py-0.2 rounded bg-surface-container-lowest border border-outline-variant/50 text-secondary pointer-events-none">⌘K</kbd></div></div><div class="flex items-center gap-3 shrink-0"><div class="flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-low border border-outline-variant/30"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span></span><span class="font-data-mono text-label-sm text-on-surface uppercase font-semibold">Live Ops</span></div><button class="relative p-1 rounded hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">notifications</span><span class="absolute -top-0.5 -right-0.5 font-data-mono text-[9px] px-1 rounded-full bg-primary text-on-primary font-semibold leading-tight">14</span></button><div class="flex items-center gap-1 font-data-mono text-label-sm text-secondary border-l border-surface-container-highest pl-3"><span class="material-symbols-outlined text-[14px]">schedule</span><span>WIB (UTC+7) 14:32</span></div><div class="flex items-center gap-2 border-l border-surface-container-highest pl-3 cursor-pointer hover:opacity-90"><img alt="Profile" class="w-7 h-7 rounded-full object-cover border border-outline-variant/50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwPz6EdFOT5QGsMMp26it9yO9c7jniDlv96BDMjI47nc_3zHUGDGBrRv31XohmjNNgGIq2eo2ztnGRoU_joW-y9AXXaMV9IClDz4hW_kN4yv0pTBSCoi1edEDp9tRwipbhzTufDRHQKQ7wl7ctTnMxp53woTVRNh-Xc4rd94plwtubrUZCBPezOfEmbBsxx7lbEb8NbxFljPX9X1wIBrVNO7hFf58brOb1GT64Fe2qUAY--Oee8FF_1w"/><div class="flex flex-col text-left"><span class="font-body-sm text-body-sm font-semibold leading-tight text-on-surface">Dian Sastrowardoyo</span><div class="flex items-center gap-1"><span class="font-label-sm text-[9px] px-1 py-0.2 rounded bg-surface-container text-on-surface-variant font-medium uppercase">Platform Admin</span></div></div><span class="material-symbols-outlined text-[16px] text-secondary">expand_more</span></div></div></header><main class="relative pt-11 w-full bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="p-space-lg md:p-margin-desktop space-y-space-xl">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-data-mono text-label-sm uppercase tracking-wider text-secondary">Operational Cockpit</span>
+<span class="font-data-mono text-label-sm text-outline-variant">/</span>
+<span class="font-data-mono text-label-sm text-primary font-semibold">JKT-BDG-SBY Cluster</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Platform Overview &amp; Ops Center</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+          Real-time discovery metrics, pending verifications, and moderation activity across Greater Jakarta, Bandung &amp; Surabaya.
+        </p>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm shrink-0">
+<div class="inline-flex rounded-lg bg-surface-container-high p-0.5" role="group">
+<button class="px-space-md py-1 rounded-DEFAULT font-label-md text-label-md bg-surface-container-lowest text-on-surface shadow-sm" type="button">Hari Ini (Today)</button>
+<button class="px-space-md py-1 rounded-DEFAULT font-label-md text-label-md text-secondary hover:text-on-surface transition-colors" type="button">7 Hari</button>
+<button class="px-space-md py-1 rounded-DEFAULT font-label-md text-label-md text-secondary hover:text-on-surface transition-colors" type="button">30 Hari</button>
+<button class="px-space-md py-1 rounded-DEFAULT font-label-md text-label-md text-secondary hover:text-on-surface transition-colors" type="button">Q3 2026</button>
+</div>
+<button class="inline-flex items-center gap-1.5 px-space-md py-1.5 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container-high font-label-md text-label-md shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">download</span>
+<span>Export Daily Ops Report (CSV)</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-md">
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Active Users Today</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">group</span>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface font-headline-lg">28,420</span>
+<span class="font-data-mono text-label-sm text-emerald-700 bg-emerald-50 px-1 py-0.5 rounded-DEFAULT">+6.8%</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">14,210 in Jabodetabek hub</p>
+</div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 62%;"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Places Indexed</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">storefront</span>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface font-headline-lg">8,640</span>
+<span class="font-data-mono text-label-sm text-emerald-700 bg-emerald-50 px-1 py-0.5 rounded-DEFAULT">+142 mo</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">94.2% verified status</p>
+</div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-emerald-700" style="width: 94.2%;"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Live Events (Weekend)</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">local_activity</span>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface font-headline-lg">74</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">curated</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">18,950 total RSVPs logged</p>
+</div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 78%;"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Pending Moderation</span>
+<span class="material-symbols-outlined text-[18px] text-primary">priority_high</span>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-primary font-headline-lg">42</span>
+<span class="font-data-mono text-label-sm text-primary-container bg-error-container/40 px-1 py-0.5 rounded-DEFAULT font-semibold">17 High Priority</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Avg turnaround: 45 min</p>
+</div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 48%;"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Claims in Review</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">verified</span>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface font-headline-lg">12</span>
+<span class="font-label-sm text-label-sm text-amber-700 bg-amber-50 px-1 py-0.5 rounded-DEFAULT">SIUP/NIB</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Legal documents awaiting check</p>
+</div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-amber-600" style="width: 32%;"></div>
+</div>
+</div>
+</div>
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-primary">assignment_late</span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold tracking-tight">Needs Attention &amp; Action Queues</h2>
+</div>
+<span class="font-data-mono text-label-sm text-secondary uppercase">SLA Target &lt; 2h</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between space-y-space-md">
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Business Claims</span>
+<span class="font-data-mono text-label-sm px-1.5 py-0.5 rounded-DEFAULT bg-amber-100 text-amber-900 font-semibold">12 Pending</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Merchant Ownership</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Kopi Sore Senopati, Warung Bu Kris Gandaria, Pantjoran Tea House PIK.</p>
+</div>
+<div class="pt-space-sm">
+<a class="inline-flex items-center justify-center w-full gap-1.5 py-2 px-space-md rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md transition-colors shadow-sm" href="#">
+<span>Review 12 Businesses</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between space-y-space-md">
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Event Curation</span>
+<span class="font-data-mono text-label-sm px-1.5 py-0.5 rounded-DEFAULT bg-primary-fixed text-on-primary-fixed-variant font-semibold">8 Pending</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Event Approvals</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Pasar Malam Santa Vol. 4, Jakarta Artisan Coffee Week, Festival Pasar Baru.</p>
+</div>
+<div class="pt-space-sm">
+<a class="inline-flex items-center justify-center w-full gap-1.5 py-2 px-space-md rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md transition-colors" href="#">
+<span>Review 8 Events</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between space-y-space-md">
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">User Reports</span>
+<span class="font-data-mono text-label-sm px-1.5 py-0.5 rounded-DEFAULT bg-error-container text-on-error-container font-semibold">17 Flagged</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Content Moderation</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Spam reviews detected, incorrect geo-tag coordinates, and duplicate photos.</p>
+</div>
+<div class="pt-space-sm">
+<a class="inline-flex items-center justify-center w-full gap-1.5 py-2 px-space-md rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md transition-colors shadow-sm" href="#">
+<span>Open Moderation Queue (17)</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between space-y-space-md">
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">KYC Verification</span>
+<span class="font-data-mono text-label-sm px-1.5 py-0.5 rounded-DEFAULT bg-surface-container text-on-surface-variant font-semibold">5 Requests</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Organizer Identity</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Indonesian KTP and NPWP validation for ticketed cultural organizers.</p>
+</div>
+<div class="pt-space-sm">
+<a class="inline-flex items-center justify-center w-full gap-1.5 py-2 px-space-md rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md transition-colors" href="#">
+<span>Verify Organizers</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-space-lg shadow-sm space-y-space-md flex flex-col justify-between">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Place Discovery &amp; Check-in Volume</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">WIB hourly footfall and check-in distribution pattern</p>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="flex items-center gap-1 font-data-mono text-label-sm text-secondary">
+<span class="h-2 w-2 rounded-full bg-primary"></span> Jaksel
+            </span>
+<span class="flex items-center gap-1 font-data-mono text-label-sm text-secondary">
+<span class="h-2 w-2 rounded-full bg-secondary"></span> Bdg Kota
+            </span>
+<span class="flex items-center gap-1 font-data-mono text-label-sm text-secondary">
+<span class="h-2 w-2 rounded-full bg-outline-variant"></span> Sby Barat
+            </span>
+</div>
+</div>
+<div class="relative w-full pt-4">
+<svg class="w-full h-44 overflow-visible" fill="none" viewbox="0 0 600 160">
+<line stroke="#E3E2E0" stroke-dasharray="2 2" stroke-width="1" x1="0" x2="600" y1="130" y2="130"></line>
+<line stroke="#E3E2E0" stroke-dasharray="2 2" stroke-width="1" x1="0" x2="600" y1="90" y2="90"></line>
+<line stroke="#E3E2E0" stroke-dasharray="2 2" stroke-width="1" x1="0" x2="600" y1="50" y2="50"></line>
+<path d="M 10 135 Q 80 133 130 110 T 210 55 T 270 95 T 350 120 T 430 35 T 510 40 T 590 120" fill="none" stroke="#A6331B" stroke-width="2.5"></path>
+<path d="M 10 140 Q 80 138 130 122 T 210 75 T 270 105 T 350 128 T 430 65 T 510 70 T 590 132" fill="none" stroke="#5F5E61" stroke-dasharray="4 2" stroke-width="2"></path>
+<path d="M 10 145 Q 80 142 130 132 T 210 98 T 270 120 T 350 136 T 430 92 T 510 96 T 590 140" fill="none" stroke="#E0BFB9" stroke-width="1.8"></path>
+<circle cx="210" cy="55" fill="#A6331B" r="4"></circle>
+<circle cx="430" cy="35" fill="#A6331B" r="4"></circle>
+</svg>
+<div class="flex justify-between font-data-mono text-label-sm text-secondary mt-2 px-1">
+<span>08:00</span>
+<span>10:00</span>
+<span class="text-on-surface font-semibold">12:00 (Lunch Peak)</span>
+<span>15:00</span>
+<span>17:00</span>
+<span class="text-primary font-semibold">20:00 (Dinner Peak)</span>
+<span>23:00</span>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary">bolt</span>
+<span class="font-body-sm text-body-sm">Traffic surge concentrated around Blok M, Senopati, and Dago Atas corridors.</span>
+</div>
+<span class="font-data-mono text-label-sm text-secondary shrink-0">Updated 2m ago</span>
+</div>
+</div>
+<div class="lg:col-span-5 bg-surface-container-lowest rounded-xl p-space-lg shadow-sm space-y-space-md">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Content Velocity &amp; Platform Health</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Throughput metrics logged since 00:00 WIB</p>
+</div>
+<div class="space-y-space-sm">
+<div class="p-space-sm rounded-lg bg-surface-container-low space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-medium">Reviews Submitted</span>
+<span class="font-data-mono text-body-sm font-semibold text-on-surface">1,842</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full flex overflow-hidden">
+<div class="bg-emerald-600 h-full" style="width: 96.4%;" title="Approved / Auto-passed (96.4%)"></div>
+<div class="bg-primary-container h-full" style="width: 3.6%;" title="Flagged (3.6%)"></div>
+</div>
+<div class="flex justify-between font-data-mono text-label-sm text-secondary">
+<span class="text-emerald-700">96.4% approved / auto-passed</span>
+<span class="text-primary font-semibold">3.6% flagged</span>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="space-y-0.5">
+<div class="font-label-md text-label-md text-on-surface font-medium">Photos Ingested</div>
+<div class="font-body-sm text-body-sm text-secondary">Avg size 2.4 MB · WebP processed</div>
+</div>
+<div class="text-right">
+<div class="font-data-mono text-headline-sm font-bold text-on-surface">4,920</div>
+<div class="font-label-sm text-label-sm text-emerald-700">100% EXIF geo-parsed</div>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="space-y-0.5">
+<div class="font-label-md text-label-md text-on-surface font-medium">Active Food &amp; Coffee Clubs</div>
+<div class="font-body-sm text-body-sm text-secondary">6 new community collectives created</div>
+</div>
+<span class="font-data-mono text-label-sm px-2 py-0.5 rounded-DEFAULT bg-surface-container text-on-surface-variant font-semibold">+240 members</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="space-y-0.5">
+<div class="font-label-md text-label-md text-on-surface font-medium">Culinary Journeys Completed</div>
+<div class="font-body-sm text-body-sm text-secondary">e.g., Jalur Kopi Cipete &amp; Pasar Kosambi</div>
+</div>
+<div class="text-right">
+<div class="font-data-mono text-headline-sm font-bold text-on-surface">348</div>
+<div class="font-label-sm text-label-sm text-primary font-semibold">Trails today</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold">Real-Time Operational Activity Stream</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Live audit ledger of incoming claims, organizer submissions, and moderation actions</p>
+</div>
+<div class="flex items-center gap-space-xs font-data-mono text-label-sm text-secondary">
+<span class="h-2 w-2 rounded-full bg-emerald-600 animate-pulse"></span>
+<span>Feed Live</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden divide-y divide-surface-container">
+<div class="p-space-md flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors">
+<div class="flex items-start gap-space-md">
+<span class="font-data-mono text-label-md text-secondary shrink-0 pt-0.5">14:28</span>
+<div class="space-y-0.5">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-label-sm text-label-sm px-1.5 py-0.2 rounded-DEFAULT bg-amber-100 text-amber-900 uppercase font-semibold">Claim Request</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">Kopi Selamat Pagi Tebet</span>
+<span class="font-body-sm text-body-sm text-secondary">submitted SIUP &amp; NIB documents for official ownership claim.</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Entity: PT Selamat Pagi Nusantara · Reg: 91200038411</p>
+</div>
+</div>
+<button class="self-start sm:self-center shrink-0 px-3 py-1 rounded-DEFAULT bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md transition-colors" type="button">
+            Review Docs
+          </button>
+</div>
+<div class="p-space-md flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors">
+<div class="flex items-start gap-space-md">
+<span class="font-data-mono text-label-md text-secondary shrink-0 pt-0.5">14:21</span>
+<div class="space-y-0.5">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-label-sm text-label-sm px-1.5 py-0.2 rounded-DEFAULT bg-primary-fixed text-on-primary-fixed-variant uppercase font-semibold">New Event</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">Kolektif Rasa Jakarta</span>
+<span class="font-body-sm text-body-sm text-secondary">submitted event draft "Pasar Rasa Blok M (Weekend Edition)".</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Scheduled: 18-19 Oct 2026 · Estimated Capacity: 1,500 pax</p>
+</div>
+</div>
+<button class="self-start sm:self-center shrink-0 px-3 py-1 rounded-DEFAULT bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md transition-colors" type="button">
+            Inspect Event
+          </button>
+</div>
+<div class="p-space-md flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors">
+<div class="flex items-start gap-space-md">
+<span class="font-data-mono text-label-md text-secondary shrink-0 pt-0.5">14:14</span>
+<div class="space-y-0.5">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-label-sm text-label-sm px-1.5 py-0.2 rounded-DEFAULT bg-emerald-100 text-emerald-900 uppercase font-semibold">Moderation SLA</span>
+<span class="font-body-md text-body-md text-on-surface">Moderator <strong>Budi P.</strong> resolved report #REP-8831</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Spam promotional review purged from "Mie Ayam Gondangdia" · User account cautioned.</p>
+</div>
+</div>
+<span class="self-start sm:self-center font-data-mono text-label-sm text-secondary">Resolved in 14m</span>
+</div>
+<div class="p-space-md flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors">
+<div class="flex items-start gap-space-md">
+<span class="font-data-mono text-label-md text-secondary shrink-0 pt-0.5">14:02</span>
+<div class="space-y-0.5">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-label-sm text-label-sm px-1.5 py-0.2 rounded-DEFAULT bg-surface-container text-on-surface-variant uppercase font-semibold">Community Ops</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">Pecinta Bakmi Jakarta</span>
+<span class="font-body-sm text-body-sm text-secondary">updated banner assets &amp; assigned 3 community curators.</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Total community member count: 4,120 active foodies</p>
+</div>
+</div>
+<button class="self-start sm:self-center shrink-0 px-3 py-1 rounded-DEFAULT bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md transition-colors" type="button">
+            Audit Group
+          </button>
+</div>
+<div class="p-space-md flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-error-container/10 hover:bg-error-container/20 transition-colors">
+<div class="flex items-start gap-space-md">
+<span class="font-data-mono text-label-md text-error shrink-0 pt-0.5">13:48</span>
+<div class="space-y-0.5">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-label-sm text-label-sm px-1.5 py-0.2 rounded-DEFAULT bg-error-container text-on-error-container uppercase font-semibold">Automated Guard</span>
+<span class="font-body-md text-body-md text-on-error-container font-semibold">Cluster Anomaly Detected</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">System auto-quarantined 3 ratings with identical IP range (180.252.xx.xx) targeting "Seafood 68 Santa".</p>
+</div>
+</div>
+<button class="self-start sm:self-center shrink-0 px-3 py-1 rounded-DEFAULT bg-primary-container text-on-primary font-label-md text-label-md transition-colors" type="button">
+            Investigate Cluster
+          </button>
+</div>
+<div class="p-space-md flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors">
+<div class="flex items-start gap-space-md">
+<span class="font-data-mono text-label-md text-secondary shrink-0 pt-0.5">13:35</span>
+<div class="space-y-0.5">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-label-sm text-label-sm px-1.5 py-0.2 rounded-DEFAULT bg-surface-container text-on-surface-variant uppercase font-semibold">Place Metadata</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">Sate Khas Senayan Menteng</span>
+<span class="font-body-sm text-body-sm text-secondary">updated holiday operational schedule for upcoming long weekend.</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Synced to Google Maps &amp; Apple Maps ingest feeds</p>
+</div>
+</div>
+<span class="self-start sm:self-center font-data-mono text-label-sm text-secondary">Auto-Approved</span>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>
